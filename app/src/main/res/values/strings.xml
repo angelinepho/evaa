@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">evaa</string>
+    <string name="welcome">"Welcome"</string>
+    <string name="earth">"Earth"</string>
+    <string name="fact">"Fun Fact"</string>
+    <string name="itemSearch">"Item Search"</string>
+    <string name="myEnvironment">"My Environment"</string>
+    <string name="itemHint">"Item"</string>
+    <string name="temp">I come from a tribe of head-hunters, so I will never need a shrink.
+    He invested some skill points in Charisma and Strength.
+    The quick brown fox jumps over the lazy dog.
+    Combines are no longer just for farms.
+    It was the scarcity that fueled his creativity.
+    The toy brought back fond memories of being lost in the rain forest.
+    Be careful with that butter knife.
+    She can live her life however she wants as long as she listens to what I have to say.
+    The quick brown fox jumps over the lazy dog.
+    </string>
+</resources>
