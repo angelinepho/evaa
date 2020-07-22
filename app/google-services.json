@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "394283137298",
+    "firebase_url": "https://evaa-project.firebaseio.com",
+    "project_id": "evaa-project",
+    "storage_bucket": "evaa-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394283137298:android:3e263dffd4e657c9351bcb",
+        "android_client_info": {
+          "package_name": "com.example.evaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394283137298-31a99b7r5p1e4e345stm017gbc9velcm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8c1_AyHPZ-nxxDV_mXhxnEBUzACmkHd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394283137298-31a99b7r5p1e4e345stm017gbc9velcm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
