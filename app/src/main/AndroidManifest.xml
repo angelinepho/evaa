@@ -15,7 +15,6 @@
         <activity android:name=".Environment" />
         <activity android:name=".ItemsPage" />
         <activity android:name=".Options" />
-        <activity android:name=".FunFacts" />
         <activity android:name=".WelcomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

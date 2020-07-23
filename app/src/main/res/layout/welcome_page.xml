@@ -8,15 +8,15 @@
     android:orientation="vertical"
     tools:context=".WelcomePage">
 
-
     <ImageView
         android:id="@+id/ivEarth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="60dp"
         android:layout_marginBottom="0dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/earth"
         app:srcCompat="@drawable/earth" />
 
@@ -25,7 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="60dp"
+        android:fontFamily="@font/oswald"
         android:gravity="center_horizontal"
         android:text="@string/welcome"
         android:textSize="36sp" />
