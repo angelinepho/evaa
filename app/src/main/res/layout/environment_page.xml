@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     android:background="#8BC34A"
     android:orientation="vertical"
-    tools:context=".MainActivity5">
+    tools:context=".Environment">
 
 </LinearLayout>

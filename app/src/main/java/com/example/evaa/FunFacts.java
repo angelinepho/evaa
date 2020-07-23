@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity2 extends AppCompatActivity {
+public class FunFacts extends AppCompatActivity {
 
     LinearLayout llTap;
     ImageView ivEarth;
@@ -18,7 +18,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.fun_facts);
 
         llTap = findViewById(R.id.llTap);
         ivEarth = findViewById(R.id.ivEarth);
@@ -36,8 +36,8 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity2.this,
-                        com.example.evaa.MainActivity3.class);
+                Intent intent = new Intent(FunFacts.this,
+                        Options.class);
 
                 startActivity(intent);
 

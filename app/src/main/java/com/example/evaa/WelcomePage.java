@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomePage extends AppCompatActivity {
 
     LinearLayout llTap;
     ImageView ivEarth;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.welcome_page);
 
         llTap = findViewById(R.id.llTap);
         ivEarth = findViewById(R.id.ivEarth);
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this,
-                        com.example.evaa.MainActivity2.class);
+                Intent intent = new Intent(WelcomePage.this,
+                        FunFacts.class);
 
                 startActivity(intent);
 

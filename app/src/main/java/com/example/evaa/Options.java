@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity3 extends AppCompatActivity {
+public class Options extends AppCompatActivity {
 
     TextView tvInstruction;
     Button btnItemSearch, btnEnvironment;
@@ -16,7 +16,7 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.options);
 
         tvInstruction = findViewById(R.id.tvInstruction);
         btnItemSearch = findViewById(R.id.btnItemSearch);
@@ -26,8 +26,8 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity3.this,
-                        com.example.evaa.MainActivity4.class);
+                Intent intent = new Intent(Options.this,
+                        ItemsPage.class);
 
                 startActivity(intent);
             }
@@ -37,8 +37,8 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity3.this,
-                        com.example.evaa.MainActivity5.class);
+                Intent intent = new Intent(Options.this,
+                        Environment.class);
 
                 startActivity(intent);
 

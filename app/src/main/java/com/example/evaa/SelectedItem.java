@@ -1,6 +1,5 @@
 package com.example.evaa;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,9 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ViewAnimator;
 
-public class MainActivity6 extends AppCompatActivity {
+public class SelectedItem extends AppCompatActivity {
 
     TextView tvItemDisplay;
     ImageView ivCheck;
@@ -19,7 +17,7 @@ public class MainActivity6 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main6);
+        setContentView(R.layout.selected_item);
 
         tvItemDisplay = findViewById(R.id.tvItemDisplay);
         ivCheck = findViewById(R.id.ivCheck);
@@ -33,8 +31,8 @@ public class MainActivity6 extends AppCompatActivity {
 
                 ivCheck.setImageResource(R.drawable.filled_check);
 
-                Intent intent = new Intent(MainActivity6.this,
-                        com.example.evaa.MainActivity5.class);
+                Intent intent = new Intent(SelectedItem.this,
+                        Environment.class);
 
                 startActivity(intent);
             }
