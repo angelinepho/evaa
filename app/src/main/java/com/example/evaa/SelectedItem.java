@@ -12,7 +12,7 @@ public class SelectedItem extends AppCompatActivity {
 
     TextView tvItemDisplay;
     ImageView ivCheck;
-    int ACTIVITY4 = 4;
+//    int ACTIVITY4 = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
