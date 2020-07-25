@@ -15,23 +15,13 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:gravity="left"
+        android:gravity="start|end"
         android:hint="@string/itemHint"
         android:importantForAutofill="no"
         android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="30dp"
-        android:text="Submit" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvItems"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="60dp"

@@ -8,35 +8,37 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SelectedItem extends AppCompatActivity {
+import com.bumptech.glide.Glide;
 
-    TextView tvItemDisplay;
-    ImageView ivCheck;
-//    int ACTIVITY4 = 4;
+public class SelectedItem extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selected_item);
 
-        tvItemDisplay = findViewById(R.id.tvItemDisplay);
-        ivCheck = findViewById(R.id.ivCheck);
-
-        Intent intent = getIntent();
-        tvItemDisplay.setText(intent.getStringExtra("item"));
-
-        ivCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                ivCheck.setImageResource(R.drawable.filled_check);
-
-                Intent intent = new Intent(SelectedItem.this,
-                        Environment.class);
-
-                startActivity(intent);
-            }
-        });
-
+        getIncomingIntent();
     }
+
+    private void getIncomingIntent(){
+        if (getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")) {
+
+            String imageUrl = getIntent().getStringExtra("image_url");
+            String imageName = getIntent().getStringExtra("image_name");
+
+            setImage(imageUrl, imageName);
+        }
+    }
+
+    private void setImage(String imageUrl, String imageName) {
+        TextView name = findViewById(R.id.image_description);
+        name.setText(imageName);
+
+        ImageView image = findViewById(R.id.image);
+        Glide.with(this)
+                .asBitmap()
+                .load(imageUrl)
+                .into(image);
+    }
+
 }

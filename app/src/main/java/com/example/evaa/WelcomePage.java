@@ -43,7 +43,7 @@ public class WelcomePage extends AppCompatActivity {
         llTap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WelcomePage.this, com.example.evaa.Options.class);
+                Intent intent = new Intent(WelcomePage.this, Options.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slidein_right, R.anim.slideout_left);
             }
