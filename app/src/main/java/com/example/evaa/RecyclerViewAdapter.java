@@ -12,19 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<Integer> mImages = new ArrayList<>();
+    private ArrayList<String> mAlternative = new ArrayList<>();
+    private ArrayList<String> mDisposal = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(ArrayList<String> imageNames, ArrayList<String> images, Context context) {
+    public RecyclerViewAdapter(ArrayList<String> imageNames, ArrayList<Integer> images,  ArrayList<String> alternative, ArrayList<String> disposal, Context context) {
         this.mImageNames = imageNames;
         this.mImages = images;
+        this.mAlternative = alternative;
+        this.mDisposal = disposal;
         this.mContext = context;
     }
 
@@ -37,10 +40,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, final int position) {
-        Glide.with(mContext)
-                .asBitmap()
-                .load(mImages.get(position))
-                .into(holder.image);
+
+        holder.image.setImageResource(mImages.get(position));
 
         holder.imageName.setText(mImageNames.get(position));
 
@@ -51,6 +52,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext, SelectedItem.class);
                 intent.putExtra("image_url", mImages.get(position));
                 intent.putExtra("image_name", mImageNames.get(position));
+                intent.putExtra("image_alternative", mAlternative.get(position));
+                intent.putExtra("image_disposal", mDisposal.get(position));
                 mContext.startActivity(intent);
             }
         });

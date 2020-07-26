@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 
 public class SelectedItem extends AppCompatActivity {
 
@@ -21,24 +20,30 @@ public class SelectedItem extends AppCompatActivity {
     }
 
     private void getIncomingIntent(){
-        if (getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")) {
+        if (getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name") &&
+                getIntent().hasExtra("image_alternative") && getIntent().hasExtra("image_disposal")) {
 
-            String imageUrl = getIntent().getStringExtra("image_url");
+            Integer imageUrl = getIntent().getIntExtra("image_url", 0);
             String imageName = getIntent().getStringExtra("image_name");
+            String imageAlternative = getIntent().getStringExtra("image_alternative");
+            String imageDisposal = getIntent().getStringExtra("image_disposal");
 
-            setImage(imageUrl, imageName);
+            setImage(imageUrl, imageName, imageAlternative, imageDisposal);
         }
     }
 
-    private void setImage(String imageUrl, String imageName) {
+    private void setImage(Integer imageUrl, String imageName, String imageAlternative, String imageDisposal) {
         TextView name = findViewById(R.id.image_description);
         name.setText(imageName);
 
         ImageView image = findViewById(R.id.image);
-        Glide.with(this)
-                .asBitmap()
-                .load(imageUrl)
-                .into(image);
+        image.setImageResource(imageUrl);
+
+        TextView alternative = findViewById(R.id.image_alternative);
+        alternative.setText(imageAlternative);
+
+        TextView disposal = findViewById(R.id.image_disposal);
+        disposal.setText(imageDisposal);
     }
 
 }
