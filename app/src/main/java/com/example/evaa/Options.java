@@ -29,24 +29,28 @@ public class Options extends AppCompatActivity {
         btnItemSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Options.this,
                         ItemsPage.class);
-
                 startActivity(intent);
             }
         });
-
         btnEnvironment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Options.this,
                         Environment.class);
-
                 startActivity(intent);
-
             }
         });
+
+        openDialog();
     }
+
+    public void openDialog() {
+        FunFactDialog dialog = new FunFactDialog();
+        dialog.show(getSupportFragmentManager(), "This is openDialog()");
+    }
+
+
+
 }

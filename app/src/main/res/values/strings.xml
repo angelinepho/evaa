@@ -16,6 +16,7 @@
     She can live her life however she wants as long as she listens to what I have to say.
     The quick brown fox jumps over the lazy dog.
     </string>
+    <string name="funfact">"This is a fact."</string>
     <string name="image">image</string>
     <string name="textview">TextView</string>
     <string name="name">name</string>
