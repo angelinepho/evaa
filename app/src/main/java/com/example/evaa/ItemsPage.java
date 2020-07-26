@@ -2,6 +2,7 @@ package com.example.evaa;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
-import android.widget.SearchView;
+
 
 import java.util.ArrayList;
 
@@ -144,8 +145,6 @@ public class ItemsPage extends AppCompatActivity {
     }
 
     // search bar
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -168,6 +167,6 @@ public class ItemsPage extends AppCompatActivity {
                 return false;
             }
         });
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 }

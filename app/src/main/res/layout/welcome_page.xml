@@ -30,4 +30,15 @@
         android:text="@string/welcome"
         android:textSize="36sp" />
 
+    <TextView
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/swipe"
+        android:textColor="@color/colorDivider"
+        android:textSize="24sp" />
+
 </LinearLayout>

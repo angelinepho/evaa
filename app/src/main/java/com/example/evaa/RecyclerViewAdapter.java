@@ -24,8 +24,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mImageNamesFull;  // for search
 
     private ArrayList<Integer> mImages = new ArrayList<>();
+    private ArrayList<Integer> mImagesFull;
+
     private ArrayList<String> mAlternative = new ArrayList<>();
+    private ArrayList<String> mAlternativeFull;
+
     private ArrayList<String> mDisposal = new ArrayList<>();
+    private ArrayList<String> mDisposalFull;
+
     private Context mContext;
 
     public RecyclerViewAdapter(ArrayList<String> imageNames, ArrayList<Integer> images,  ArrayList<String> alternative, ArrayList<String> disposal, Context context) {
@@ -33,8 +39,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mImageNamesFull = new ArrayList<>(imageNames);  // copy of imageNames
 
         this.mImages = images;
+        mImagesFull = new ArrayList<>(images);
+
         this.mAlternative = alternative;
+        mAlternativeFull = new ArrayList<>(alternative);
+
         this.mDisposal = disposal;
+        mDisposalFull = new ArrayList<>(disposal);
+
         this.mContext = context;
     }
 
@@ -80,17 +92,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Filter imageNameFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
-            List<String> filteredList = new ArrayList<>();
+            List<Integer> filteredList = new ArrayList<>();
 
             if (charSequence == null || charSequence.length() == 0)
             {
-                filteredList.addAll(mImageNamesFull);
+                for (String item : mImageNamesFull) {
+                    filteredList.add(mImageNamesFull.indexOf(item));
+                }
             } else {
                 String filterPattern = charSequence.toString().toLowerCase().trim();
 
                 for (String item : mImageNamesFull) {
                     if (item.toLowerCase().contains(filterPattern)) {
-                        filteredList.add(item);
+                        filteredList.add(mImageNamesFull.indexOf(item));
                     }
                 }
             }
@@ -104,7 +118,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             mImageNames.clear();
-            mImageNames.addAll((List) filterResults.values);
+            mImages.clear();
+            mAlternative.clear();
+            mDisposal.clear();
+
+            for (Object i : (List) filterResults.values) {
+                mImageNames.add(mImageNamesFull.get((int) i));
+                mImages.add(mImagesFull.get((int) i));
+                mAlternative.add(mAlternativeFull.get((int) i));
+                mDisposal.add(mDisposalFull.get((int) i));
+            }
+
             notifyDataSetChanged();
         }
     };

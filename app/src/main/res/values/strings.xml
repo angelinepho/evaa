@@ -25,4 +25,6 @@
     <string name="check">check</string>
     <string name="alternatives">Alternatives</string>
     <string name="disposal_methods">Disposal Methods</string>
+    <string name="search">Search</string>
+    <string name="swipe"><![CDATA[<<< swipe <<<]]></string>
 </resources>
