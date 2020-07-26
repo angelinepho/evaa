@@ -1,14 +1,23 @@
 package com.example.evaa;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
 public class ItemsPage extends AppCompatActivity {
+
+    RecyclerViewAdapter adapter;
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<Integer> mImageUrls = new ArrayList<>();
@@ -81,17 +90,17 @@ public class ItemsPage extends AppCompatActivity {
 
         mImageUrls.add(R.drawable.ic_ash_from_manufactured_logs_and_pellets);
         mNames.add("Ash from Logs and Pellets");
-        mAlternative.add("none");
+        mAlternative.add("not available");
         mDisposal.add("Usually manufactured logs and pellets are made form wood waste, sawdust, and waxes. Make sure the product contains natural adhesive (natural waxes and oils) vs. petroleum-based products. Products with natural adhesive should be applied to your garden, soil, or compost. Throw away ash with  petroleum-based products or unknown substances.");
 
         mImageUrls.add(R.drawable.ic_auto_product_bottle);
         mNames.add("Auto Product Bottles");
-        mAlternative.add("none");
+        mAlternative.add("not available");
         mDisposal.add("Put the item in your trash.");
 
         mImageUrls.add(R.drawable.ic_automotive_batteries);
         mNames.add("Automotive Batteries");
-        mAlternative.add("none");
+        mAlternative.add("not available");
         mDisposal.add("Return lead-acid auto batteries for recycling at retail stores that sell such batteries. Some towns accept lead-acid auto batteries at their local transfer station.");
 
         mImageUrls.add(R.drawable.ic_ballpen);
@@ -129,8 +138,36 @@ public class ItemsPage extends AppCompatActivity {
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, this);
+        adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+    }
+
+    // search bar
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.image_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
+        return true;
     }
 }

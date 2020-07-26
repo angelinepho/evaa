@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,10 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable {
 
     private ArrayList<String> mImageNames = new ArrayList<>();
+    private ArrayList<String> mImageNamesFull;  // for search
+
     private ArrayList<Integer> mImages = new ArrayList<>();
     private ArrayList<String> mAlternative = new ArrayList<>();
     private ArrayList<String> mDisposal = new ArrayList<>();
@@ -25,6 +30,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public RecyclerViewAdapter(ArrayList<String> imageNames, ArrayList<Integer> images,  ArrayList<String> alternative, ArrayList<String> disposal, Context context) {
         this.mImageNames = imageNames;
+        mImageNamesFull = new ArrayList<>(imageNames);  // copy of imageNames
+
         this.mImages = images;
         this.mAlternative = alternative;
         this.mDisposal = disposal;
@@ -63,6 +70,44 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return mImageNames.size();
     }
+
+    // filterable method
+    @Override
+    public Filter getFilter() {
+        return imageNameFilter;
+    }
+
+    private Filter imageNameFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<String> filteredList = new ArrayList<>();
+
+            if (charSequence == null || charSequence.length() == 0)
+            {
+                filteredList.addAll(mImageNamesFull);
+            } else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+
+                for (String item : mImageNamesFull) {
+                    if (item.toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            mImageNames.clear();
+            mImageNames.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
