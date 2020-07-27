@@ -1,14 +1,11 @@
 package com.example.evaa;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,9 +13,9 @@ import android.widget.TextView;
 
 public class WelcomePage extends AppCompatActivity {
 
-    LinearLayout llTap;
-    ImageView ivEarth;
-    TextView tvWelcome;
+    private LinearLayout llTap;
+    private ImageView ivEarth;
+    private TextView tvWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,7 @@ public class WelcomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(WelcomePage.this, Options.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slidein_right, R.anim.slideout_left);
+                overridePendingTransition(R.anim.slidein_bottom, R.anim.slideout_top);
             }
         });
     }

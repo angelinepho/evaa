@@ -20,8 +20,6 @@ public class Environment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.environment_page);
         initializeProgressBar();
-        progressAnimator.setDuration(7000);
-
         progressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator anim) {
@@ -34,7 +32,7 @@ public class Environment extends AppCompatActivity {
     }
 
     private void initializeProgressBar() {
-        progressBarAnim = findViewById(R.id.progress_horizontal);
+        progressBarAnim = findViewById(R.id.determinateBar);
         progressAnimator = ObjectAnimator.ofInt(progressBarAnim, "progress", 0, 100);
     }
 

@@ -10,15 +10,28 @@
     tools:context=".Environment">
 
     <ProgressBar
-        android:id="@+id/progress_horizontal"
-        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/determinateBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/custom_progressbar"
+        android:progressDrawable="@drawable/custom_progressbar"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:progress="25"/>
+
+    <Button
+        android:id="@+id/btnItemSearch"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="80dp"
+        android:height="70dp"
+        android:background="@drawable/custom_logbutton"
+        android:text="X"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
 </LinearLayout>
