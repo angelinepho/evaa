@@ -26,5 +26,6 @@
     <string name="alternatives">Alternatives</string>
     <string name="disposal_methods">Disposal Methods</string>
     <string name="search">Search</string>
-    <string name="swipe"><![CDATA[<<< swipe <<<]]></string>
+    <string name="swipe">swipe up</string>
+    <string name="log">LOG</string>
 </resources>
