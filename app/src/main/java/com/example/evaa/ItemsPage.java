@@ -46,7 +46,7 @@ public class ItemsPage extends AppCompatActivity {
 
         mImageUrls.add(R.drawable.ic_air_conditioner);
         mNames.add("Air Conditioner");
-        mAlternative.add("Purchase air conditioners with higher BTUs and an Energy Star Certification. Also consider size, scheduling programs, and modification options.");
+        mAlternative.add("Purchase air conditioners with higher BTUs and an Energy Star Certification. Also consider size, scheduling programs, and modification activity_options.");
         mDisposal.add("If the air conditioner is in working condition, donate it. Otherwise, contact your local recycling coordinator, find an appliance recycling program, or contact you local utility company to see if they will accept your old air conditioner for proper disposal. Some utility companies offer rebate programs when you upgrade to a more energy efficient air cooling system.");
 
         mImageUrls.add(R.drawable.ic_aluminum_foil);
@@ -201,7 +201,7 @@ public class ItemsPage extends AppCompatActivity {
 
         mImageUrls.add(R.drawable.ic_cotton_swabs);
         mNames.add("Cotton Swabs (Q-tips)");
-        mAlternative.add("Steer clear of cotton swabs with plastic stems. An even better options would be biodegradable swabs or reusable swabs (e.g. LastSwab, Bamboo ear picks).");
+        mAlternative.add("Steer clear of cotton swabs with plastic stems. An even better activity_options would be biodegradable swabs or reusable swabs (e.g. LastSwab, Bamboo ear picks).");
         mDisposal.add("Swabs with paper stems (white) should go into a compost bin. Swabs with plastic (colorful) stems should go into the trash.");
 
         mImageUrls.add(R.drawable.ic_crayons);

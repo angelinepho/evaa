@@ -20,7 +20,7 @@ public class WelcomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_page);
+        setContentView(R.layout.activity_welcome_page);
 
         llTap = findViewById(R.id.llTap);
         ivEarth = findViewById(R.id.ivEarth);

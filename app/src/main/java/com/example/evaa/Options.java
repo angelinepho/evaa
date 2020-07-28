@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.evaa.Environment;
 import com.example.evaa.ItemsPage;
-import com.example.evaa.R;
 
 public class Options extends AppCompatActivity {
 
@@ -20,7 +18,7 @@ public class Options extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.options);
+        setContentView(R.layout.activity_options);
 
         tvInstruction = findViewById(R.id.tvInstruction);
         btnItemSearch = findViewById(R.id.btnItemSearch);
