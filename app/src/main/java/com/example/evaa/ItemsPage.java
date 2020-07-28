@@ -184,6 +184,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Find sustainable local coffee roasters or brands that uphold ethical practices. Use reusable coffee filters (i.e. Keurig's My K-Cup filters, stainless steel filters, and reusable organic hemp coffee filter)");
         mDisposal.add("Place this item in a backyard composter. Aim for 1/3 \"green\" materials (fruits, vegetables) and 2/3 \"brown\" materials (leaves, branches). Remember to turn the compost pile regularly.");
 
+        mImageUrls.add(R.drawable.ic_shampoo_bottle);
+        mNames.add("Conditioner Bottle");
+        mAlternative.add("Conditioner bars");
+        mDisposal.add("Fully utilize conditioner mixture. Bottle can be recycled if made from #1 plastic(PET) or #2 plastic(HDPE), which are accepted by most curbside recycling programs. Most recycling programs ask for rinsed bottles before recycling. Check with your local program whether or not caps should be kept on the bottle. Leaving the label on should be ok.");
+
         mImageUrls.add(R.drawable.ic_cosmetic);
         mNames.add("Cosmetic Products");
         mAlternative.add("Purchase makeup from eco-friendly brands. Research and read reviews beforehand to limit the amount of products you purchase. Avoid single-use products, such as cotton pads and makeup-remover wipes, by looking into alternatives.");
@@ -350,7 +355,7 @@ public class ItemsPage extends AppCompatActivity {
         mDisposal.add("Clean the wand with Dawn liquid soap. Place into a Ziploc bag and mail to a Wildlife Refuge Accepting donations.");
 
         mImageUrls.add(R.drawable.ic_mechanical_pencil);
-        mNames.add("Mechanical Pencils");
+        mNames.add("Mechanical Pencil");
         mAlternative.add("Wooden pencils, typing");
         mDisposal.add("Send to Terracycle's Pens, Pencils and Markers Zero Waste Box program or look for other programs that recycle.");
 
@@ -430,12 +435,145 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Stainless steel, glass, silicone, or paper straws, Request for drinks without straws when dining out");
         mDisposal.add("Cannot be recycled, Dispose of in trash.");
 
+        mImageUrls.add(R.drawable.ic_plastic_toys);
+        mNames.add("Plastic Toys");
+        mAlternative.add("Purchase toys from eco-friendly brands, Take proper care to allow for long usage.");
+        mDisposal.add("Remove any batteries and dispose of them as hazardous waste. Toys with electronic parts should be disposed of as e-waste. Toys in a good condition should be donated, while broken toys should be sent to programs, such as Hasbro Toy's, to be recycled properly. Otherwise, dispose of in the trash.");
+
+        mImageUrls.add(R.drawable.ic_plastic_utensils);
+        mNames.add("Plastic Utensils");
+        mAlternative.add("Metal or bamboo utensils, Wash and reuse old plastic utensils");
+        mDisposal.add("Cannot be recycled, Dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_plastic_water_bottle);
+        mNames.add("Plastic Water Bottle");
+        mAlternative.add("Reusable water bottle");
+        mDisposal.add("Dump water where available; Best to dump on plants. Bottle can be recycled if made from #1 plastic(PET) or #2 plastic(HDPE), which are accepted by most curbside recycling programs. Most recycling programs ask for rinsed bottles before recycling. Check with your local program whether or not caps should be kept on the bottle. Leaving the label on should be ok.");
+
+        mImageUrls.add(R.drawable.ic_plastic_wrap);
+        mNames.add("Plastic/Saran Wrap");
+        mAlternative.add("Beeswax wraps");
+        mDisposal.add("Cannot be recycled. Dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_razor_blade_refills);
+        mNames.add("Razor Blade Refills");
+        mAlternative.add("Electric shaver");
+        mDisposal.add("Cannot be recycled. Use an old container to safely store and dispose of used razor blades, Alternatively wrap and secure used blades in paper.");
+
+        mImageUrls.add(R.drawable.ic_rechargable_battery);
+        mNames.add("Rechargeable Batteries");
+        mAlternative.add("not available");
+        mDisposal.add("Recycle at participating retail collection points including most Wal-Mart and Best Buy stores.");
+
+        mImageUrls.add(R.drawable.ic_refrigerator);
+        mNames.add("Refrigerator");
+        mAlternative.add("Find an eco-friendly fridge design that is made to save energy. For example, some newer fridges have the ability to adjust to the temperature outside. Some more environmental designs include LG PANORAMA French Door Refrigerator, Oceania: Fridge designed by Tez Patel, 6596 Refrigerator from Kenmore, and RF266ABPN Refrigerator from Samsung.");
+        mDisposal.add("It is illegal to place major appliances in household garbage because they have components that are harmful to health and the environment. Donate/resell working appliances or contact your local waste removal service to schedule a pick-up.");
+
+        mImageUrls.add(R.drawable.ic_shampoo_bottle);
+        mNames.add("Shampoo Bottle");
+        mAlternative.add("Shampoo bars");
+        mDisposal.add("Fully utilize shampoo mixture. Bottle can be recycled if made from #1 plastic(PET) or #2 plastic(HDPE), which are accepted by most curbside recycling programs. Most recycling programs ask for rinsed bottles before recycling. Check with your local program whether or not caps should be kept on the bottle. Leaving the label on should be ok.");
+
+        mImageUrls.add(R.drawable.ic_shoes);
+        mNames.add("Shoes");
+        mAlternative.add("Eco-friendly brands for shoes");
+        mDisposal.add("Shoes can be donated to a shoe company such as Nike's Reuse a Shoe program.");
+
+        mImageUrls.add(R.drawable.ic_soap_wrapped_in_plastic);
+        mNames.add("Soap Packaged in Plastic");
+        mAlternative.add("Soap bar wrapped in cardboard or paper, biodegradable soap");
+        mDisposal.add("Use soap fully and recycle plastic wrapping.");
+
+        mImageUrls.add(R.drawable.ic_stove);
+        mNames.add("Stove");
+        mAlternative.add("Slow cooker/crock-Pot, microwave, hot plate, convection oven");
+        mDisposal.add("Sell to appliance retailers, donate to charities, or recycle via recycling/disposal programs.");
+
+        mImageUrls.add(R.drawable.ic_styrofoam);
+        mNames.add("Styrofoam");
+        mAlternative.add("Mushroom material, plantable packaging, edible packing peanuts, InCycle Cups, bamboo fiber eco bowl, EarthAware biodegradable packing material, etc. ");
+        mDisposal.add("Cannot be recycled. Dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_teabag);
+        mNames.add("Teabags");
+        mAlternative.add("Loose-leaf tea, herbal teas using fresh herbs, fruit water");
+        mDisposal.add("Place this item in a backyard composter. Aim for 1/3 \"green\" materials (fruits, vegetables) and 2/3 \"brown\" materials (leaves, branches). Remember to turn the compost pile regularly.");
+
+        mImageUrls.add(R.drawable.ic_television);
+        mNames.add("Television");
+        mAlternative.add("Newer televisions require less energy than old ones. Look on sust-it.net for the most energy efficient electronics.");
+        mDisposal.add("Donate working TVs to a local charity, take it to a recycling facility/pick up service, return it to the manufacturer, sell it, give it away for free");
+
+        mImageUrls.add(R.drawable.ic_tire);
+        mNames.add("Tire");
+        mAlternative.add("Look for green manufacturing, energy efficiency, and lower cost of ownership.");
+        mDisposal.add("Call transfer station to ensure that your tires are accpeted. Do not place tires in garbage or recycling cart.");
+
+        mImageUrls.add(R.drawable.ic_tissues);
+        mNames.add("Tissues/Kleenex");
+        mAlternative.add("Handkerchief");
+        mDisposal.add("Cannot be recycled, Dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_to_go_containers);
+        mNames.add("To-Go Container");
+        mAlternative.add("Reusable lunch box");
+        mDisposal.add("This varies depending on the material your to-go container is constructed from. Before disposing of, be sure to clean and dry your container Plastic and aluminum containers can be recycled, Wax-coated paper and foam containers cannot be recycled and should be disposed of in trash.");
+
+        mImageUrls.add(R.drawable.ic_toner);
+        mNames.add("Toner/Ink Cartridge");
+        mAlternative.add("not available");
+        mDisposal.add("Cannot be recycled. Dispose of in trash. Alternatively, recycle them at your local office retailer.");
+
+        mImageUrls.add(R.drawable.ic_toothbrush);
+        mNames.add("Toothbrush");
+        mAlternative.add("Biodegradable toothbrushes with plant-based bristles");
+        mDisposal.add("Electric toothbrushes should be disposed of following e-waste guidelines, Regular toothbrushes should be cleaned and dried completely, Visit TerraCycle to download a free shipping label to ship used toothbrushes.");
+
+        mImageUrls.add(R.drawable.ic_toothpaste_tube);
+        mNames.add("Toothpaste Tube");
+        mAlternative.add("Use Zero Waste Plastic Free toothpaste (i.e. chewable toothpaste, powder toothpaste, mineral toothpaste, tooth nibs/tab/tablets).");
+        mDisposal.add("Put toothpaste tubes in the trash. Alternatively, send used or empty oral care products and packaging to Terracycle's Program in partnership with Colgate.");
+
+        mImageUrls.add(R.drawable.ic_unusable_fabric);
+        mNames.add("Unusable Clothing/Fabric");
+        mAlternative.add("not available");
+        mDisposal.add("Place clothing and fabric that cannot be reused in a bag marked \"scraps\" and put in one a donation drop box. This material will be turned into rags or insulation.");
+
+        mImageUrls.add(R.drawable.ic_vaping_pens_e_cigarettes);
+        mNames.add("Vaping Pens/E-cigarettes");
+        mAlternative.add("not available");
+        mDisposal.add("Remove the filler material, rinsing it under running water until all nicotine residues are removed, and then wrapping it in a scrap of biodegradable material. Turn device 'off' before dropping off at e-waste collection site (e.g. Best Buy). Do not put vaping devices in the trash and recycling. Fires have been caused by the rechargeable battery.");
+
+        mImageUrls.add(R.drawable.ic_washer);
+        mNames.add("Washer");
+        mAlternative.add("Bucket, washboard bucket");
+        mDisposal.add("Appliance retailers and local scrap metal recyclers will take this item off your hands. Your state's energy office, water conservation and local utility programs may also take your washer and place it into a washer recycling program.");
+
+        mImageUrls.add(R.drawable.ic_watch_button_battery);
+        mNames.add("Watch/Button Silver Oxide Batteries");
+        mAlternative.add("not available");
+        mDisposal.add("Many jewelry stores will recycle these batteries when you bring your watch in to have the batter replaced. If not, please bring to a household hazardous waste (HHW) collection in you area. ");
+
+        mImageUrls.add(R.drawable.ic_wood_fireplace_ash);
+        mNames.add("Wood/Fireplace Ash");
+        mAlternative.add("not available");
+        mDisposal.add("There are uses for wood ash and ash from the fireplace assuming you didn't use burn treated or painted wood. It can be used in your compost pile (very small amount), as an insect repellent (sprinkle small amounts around the perimeter of your garden to deter slugs and snails), or applied to your soil if you need to raise the pH. Treated or painted/stained wood should not be burned, as it emits toxins into the air and results in contaminated ash.");
+
+        mImageUrls.add(R.drawable.ic_zinc);
+        mNames.add("Zinc-Air Batteries");
+        mAlternative.add("not available");
+        mDisposal.add("Bring the batteries to a household hazardous waste (HHW) collection in your area.");
+
+        mImageUrls.add(R.drawable.ic_ziploc_bag);
+        mNames.add("Ziploc/Sandwich Bags");
+        mAlternative.add("Storage containers, Reusable storage bags, Wash and reuse bags");
+        mDisposal.add("Rinse and allow the bag to dry completely, Bring to a film plastic recycling center.");
+
 //        mImageUrls.add(R.drawable.ic_);
 //        mNames.add("");
 //        mAlternative.add("");
 //        mDisposal.add("");
-
-
 
         initRecyclerView();
     }
