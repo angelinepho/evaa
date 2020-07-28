@@ -274,10 +274,168 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("LED light bulbs, LED tube lighting, natural lighting, candles, CMH lighting, and Halogen");
         mDisposal.add("Take this to a household hazardous waste disposal facility. Do not put in your home trash or recycling cart without consulting your local disposal agency.");
 
+        mImageUrls.add(R.drawable.ic_garden_hose);
+        mNames.add("Garden Hose");
+        mAlternative.add("Choose natural rubber hoses instead of synthetic ones made from toxic PVC (Polyvinyl Chloride) that contain toxic chemicals and don’t break down well. There are also stainless steel garden hoses available that won’t kink and tangle. Remember not to leave your rubber garden hose out in the sun even for a couple of hours, as not only will it head the water, but it will also accelerate photodegradation.");
+        mDisposal.add("Put this item in your trash.");
+
+        mImageUrls.add(R.drawable.ic_gas_car);
+        mNames.add("Gas-Fueled Cars");
+        mAlternative.add("Hybrid cars, Electric cars, Public transportation, Bike");
+        mDisposal.add("Trade it in, donate it, sell it.");
+
+        mImageUrls.add(R.drawable.ic_gift_card);
+        mNames.add("Gift Cards");
+        mAlternative.add("Online credits, biodegradable paper gift cards, wood gift cards");
+        mDisposal.add("These cannot be recycled in curbside recycling. Find a drop-off location or mail-in program, which usually accepts PVC-made (Polyvinyl chloride) gift cards.");
+
+        mImageUrls.add(R.drawable.ic_gift_wrapping);
+        mNames.add("Gift Wrapping/Wrapping Paper");
+        mAlternative.add("Reusable fabric (tenugui cloth)");
+        mDisposal.add("Wrapping paper without additives (i.e. glitter or plastics) can often be recycled through your local curbside program.");
+
+        mImageUrls.add(R.drawable.ic_glass_of_water);
+        mNames.add("Glass");
+        mAlternative.add("Glass is a great alternative to plastic, as it is 100% recyclable. Consider reusing purchased glass jars, e.g pasta sauce jars, rather than purchasing a set. ");
+        mDisposal.add("Broken glass are hazardous and should be wrapped in newspaper or a plastic bag, then disposed of in the trash. Glassware and Pyrex should be placed in the trash due to their high melting points. Glass jars should be separated from their lids and recycled separately. Be sure to clean jars before disposing of them.");
+
+        mImageUrls.add(R.drawable.ic_greeting_cards);
+        mNames.add("Greeting Cards");
+        mAlternative.add("Send E-Cards, make your own card from scrap material, or pick from a selection of sustainable greeting card brands. For example, Seedy Cards sells plantable greeting cards that produce wild flowers.");
+        mDisposal.add("Musical greeting cards contain button batteries and circuit boards. Remove the button battery and circuit board card and recycle the card (do not bag your home recyclables). Donate unused greeting cards to secondhand stores. Cards are great to reuse for crafts around the holidays: cut to make gift tags, use the front part as a postcard greeting card, and more.");
+
+        mImageUrls.add(R.drawable.ic_gum);
+        mNames.add("Gum");
+        mAlternative.add("Chicle-based gum which is compostable,  Gum wrapped in paper or biodegradable packaging");
+        mDisposal.add("Blister packs and foil wrappers cannot be recycled and should be disposed of in trash. Plastic gum containers can be reused. If the container is labeled #2, it can be recycled, otherwise, dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_hair_dryer);
+        mNames.add("Hair Dryer");
+        mAlternative.add("Air dry hair");
+        mDisposal.add("Drop off at a local scrap metal recycling center.");
+
+        mImageUrls.add(R.drawable.ic_hair_products);
+        mNames.add("Hair Products");
+        mAlternative.add("Looks for brands that operate sustainably in some way. Try to avoid single use plastic. If that is not possible buying the extra large sizes or opting into the refill system can help cut your waster further.");
+        mDisposal.add("Bring liquid products and aerosol cans to The Recycling Zone. Dry product can go in the trash. Empty bottles can go in your home recycling cart.");
+
+        mImageUrls.add(R.drawable.ic_headphones);
+        mNames.add("Headphones/Earbuds");
+        mAlternative.add("Invest in quality headphones to prevent early breakage and frequent disposal.");
+        mDisposal.add("If your headphones are beyond repair, reach out to local recycling facilities for proper disposal or reach out to electronic stores for possible trade-ins or recycling programs.");
+
+        mImageUrls.add(R.drawable.ic_kitchen_oil);
+        mNames.add("Kitchen Grease/Cooking Oil");
+        mAlternative.add("not available");
+        mDisposal.add("Small amount: let the oil cool in the pan, wipe up with paper towel and discard in trash. Large amount: pour the grease into a can or jar and let it cool, once filled, seal it as best as possible and dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_lip_balm);
+        mNames.add("Lip Balm/ChapStick");
+        mAlternative.add("Find zero waste lip balm or make your own lip balm in a reusable container.");
+        mDisposal.add("Keep the container and refill it with homemade lipblam or check if the lipbalm company has a recycling take back program. If neither of these apply, contact your local waste management agency to see if they accept this item.");
+
+        mImageUrls.add(R.drawable.ic_lithium_battery);
+        mNames.add("Lithium Batteries");
+        mAlternative.add("not available");
+        mDisposal.add("Any type of lithium battery should not be put in the trash. Please bring to a household hazardous waste (HHW) collection in your area.");
+
+        mImageUrls.add(R.drawable.ic_lotion);
+        mNames.add("Lotion");
+        mAlternative.add("Aloe vera, shea butter, cocoa butter, olive oil");
+        mDisposal.add("Go online and contact your local disposal center to see if they accept cosmetics as hazardous waste. Else, clean out the product as much as you can and then you can recycle the item.");
+
+        mImageUrls.add(R.drawable.ic_mascara_wand);
+        mNames.add("Mascara Wand");
+        mAlternative.add("not available");
+        mDisposal.add("Clean the wand with Dawn liquid soap. Place into a Ziploc bag and mail to a Wildlife Refuge Accepting donations.");
+
+        mImageUrls.add(R.drawable.ic_mechanical_pencil);
+        mNames.add("Mechanical Pencils");
+        mAlternative.add("Wooden pencils, typing");
+        mDisposal.add("Send to Terracycle's Pens, Pencils and Markers Zero Waste Box program or look for other programs that recycle.");
+
+        mImageUrls.add(R.drawable.ic_medical_mask);
+        mNames.add("Medical Face Masks");
+        mAlternative.add("Unless the face masks are for medical purposes, purchase or create your own reusable cloth masks.");
+        mDisposal.add("Surgical masks should be folded inwards so that the inside is no longer exposed, then placed in tissue paper or a bag. N95 respirator masks should simply be placed in a plastic bag. Both should be disposed of in the trash. Be sure to wash your hands before and after handling masks.");
+
+        mImageUrls.add(R.drawable.ic_medications);
+        mNames.add("Medications (prescription & over-the-counter)");
+        mAlternative.add("not available");
+        mDisposal.add("Do not pour medications down the sink or flush down the toilet. Find a medication drop-off station near you. Drop-off is safe and anonymous. Keep medicine in it's original container (sealed). Cross your name off the container.");
+
+        mImageUrls.add(R.drawable.ic_microwave);
+        mNames.add("Microwave");
+        mAlternative.add("Look for a microwave that will stand the test of time. If possible find a microwave that combines other appliances, like an oven. Also, keep in mind whether this is an essential appliance for you. Some brands to look at are Miele microwave, Smeg build-in microwave, Swan microwave, and Belling microwaves.");
+        mDisposal.add("If it is in working condition, donate it. Otherwise, find a place to drop if off (trash companies, recycling/drop-off buildings).");
+
+        mImageUrls.add(R.drawable.ic_mouthwash);
+        mNames.add("Mouthwash");
+        mAlternative.add("Make your own baking soda mouthwash (combine 2 ounces of water with 1/4 teaspoon of baking soda, 1 drop of pure pepperment oil, and 1 drop of tea tree oil in a reusable container) or herbal antibacterial mouthwash (first place 1 ounce of cloves or powdered myrrh or 2 to 4 ounces of goldenseal or rosemary in a pint-sized jar). You can also try plastic free tablet mouthwash or liquid mouthwash in a glass bottle.");
+        mDisposal.add("Rinse the mouthwash bottle and place it in recycling.");
+
+        mImageUrls.add(R.drawable.ic_newspaper);
+        mNames.add("Newspaper");
+        mAlternative.add("When possible, go digital.");
+        mDisposal.add("Newspaper can be recycled or composted as long as it is clean.");
+
+        mImageUrls.add(R.drawable.ic_nonrechargeable_household_battery);
+        mNames.add("Non-Rechargeable Alkaline & Zinc Carbon Batteries");
+        mAlternative.add("not available");
+        mDisposal.add("These batteries are not hazardous and can be disposed of in regular trash (but recycling can be available).");
+
+        mImageUrls.add(R.drawable.ic_notebook);
+        mNames.add("Notebooks");
+        mAlternative.add("Digital note taking");
+        mDisposal.add("Ensure notebook is not stained in any way, then proceed to put in recycling container.");
+
+        mImageUrls.add(R.drawable.ic_paper);
+        mNames.add("Paper");
+        mAlternative.add("When possible, go digital, Reuse old paper for crafts or scratch-work.");
+        mDisposal.add("Paper can be recycled. Avoid tearing or shredding the paper into small pieces. Paper with glitter should be disposed of in the trash.");
+
+        mImageUrls.add(R.drawable.ic_paper_towel_napkins);
+        mNames.add("Paper Towels/Napkins");
+        mAlternative.add("Cloth towels/napkins");
+        mDisposal.add("Food-soiled, greasy, and chemical towels should be discarded into the garbage, Clean paper towels can be composted.");
+
+        mImageUrls.add(R.drawable.ic_photography_film);
+        mNames.add("Photographs/Film");
+        mAlternative.add("Go digital!");
+        mDisposal.add("Cannot be recycled, Dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_plastic_bread);
+        mNames.add("Plastic Bread Bag");
+        mAlternative.add("Beeswax bread bag");
+        mDisposal.add("Join Terracycle's Program in Partnership with Bimbo Bakeries USA. Collect, print label, and ship.");
+
+        mImageUrls.add(R.drawable.ic_plastic_cup);
+        mNames.add("Plastic Cups");
+        mAlternative.add("Glassware, Reusable cups, Bring your own bottle for drinks when dining out");
+        mDisposal.add("If applicable, remove the lid and discard it in the trash, Rinse the cup and allow it to dry completely, If the cup is #6 rigid plastic, visit TerraCycle for a free shipping label to send your cups. If the cup is clear and soft, place in the recycling bin.");
+
+        mImageUrls.add(R.drawable.ic_plastic_loofah);
+        mNames.add("Plastic Loofah");
+        mAlternative.add("Biodegradable loofah from a Luffa Gourd plant");
+        mDisposal.add("Reuse it in some way or discard in the trash.");
+
+        mImageUrls.add(R.drawable.ic_plastic_shopping_bag);
+        mNames.add("Plastic Shopping Bag");
+        mAlternative.add("Reusable (cotton or hemp preferred) bag, Save already-owned plastic bags for additional use");
+        mDisposal.add("Recyclable: Grocery & retail bags, Newspaper bags, the outer Wrapping from Napkins, Paper Towels, Bathroom Tissue & Diapers, Bread bags, Dry cleaning bags, the outer wrapping from bulk beverages, produce bags; All clean, dry bags Labeled #2 or #4. These can be disposed of through drop-off locations at some major retailers or through curbside pick-up programs. \n" +
+                "Non-recyclable: Food or cling wrap, Prepackaged food bags (including frozen food bags and pre-washed salad bags), Plastic Film That has Been Painted or has Excessive Glue Residue.");
+
+        mImageUrls.add(R.drawable.ic_plastic_straw);
+        mNames.add("Plastic Straw");
+        mAlternative.add("Stainless steel, glass, silicone, or paper straws, Request for drinks without straws when dining out");
+        mDisposal.add("Cannot be recycled, Dispose of in trash.");
+
 //        mImageUrls.add(R.drawable.ic_);
 //        mNames.add("");
 //        mAlternative.add("");
 //        mDisposal.add("");
+
+
 
         initRecyclerView();
     }
