@@ -11,6 +11,7 @@
         android:id="@+id/tvInstruction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD:app/src/main/res/layout/options.xml
         android:background="@drawable/custom_textbubble"
         android:layout_margin="40dp"
         android:fontFamily="@font/oswald"
@@ -18,29 +19,46 @@
         android:text="@string/temp"
         android:textColor="@color/colorText"
         android:textSize="18dp" />
+=======
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/custom_textbubble"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/temp" />
+>>>>>>> 7bab0d56e66d5930026157de3105b5f2256e5cf2:app/src/main/res/layout/activity_options.xml
 
     <Button
         android:id="@+id/btnItemSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:height="70dp"
         android:background="@drawable/custom_button"
+        android:gravity="center_horizontal|center_vertical"
         android:text="@string/itemSearch"
-        android:textColor="#000000"
+        android:textColor="@color/colorText"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnEnvironment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="80dp"
         android:height="70dp"
         android:background="@drawable/custom_button"
+        android:gravity="center_horizontal|center_vertical"
         android:text="@string/myEnvironment"
-        android:textColor="#000000"
+        android:textColor="@color/colorText"
         android:textSize="24sp" />
 </LinearLayout>
