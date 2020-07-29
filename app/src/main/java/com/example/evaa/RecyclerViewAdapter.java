@@ -9,18 +9,19 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable {
 
-    private ArrayList<String> mImageNames = new ArrayList<>();
+    public ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mImageNamesFull;  // for search
 
     private ArrayList<Integer> mImages = new ArrayList<>();
@@ -83,6 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mImageNames.size();
     }
 
+
     // filterable method
     @Override
     public Filter getFilter() {
@@ -132,6 +134,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             notifyDataSetChanged();
         }
     };
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

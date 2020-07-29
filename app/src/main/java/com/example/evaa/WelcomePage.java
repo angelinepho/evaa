@@ -23,7 +23,6 @@ public class WelcomePage extends AppCompatActivity {
         setContentView(R.layout.welcome_page);
 
         llTap = findViewById(R.id.llTap);
-        ivEarth = findViewById(R.id.ivEarth);
         tvWelcome = findViewById(R.id.tvWelcome);
         final Typeface typeface = ResourcesCompat.getFont(this, R.font.oswald);
         tvWelcome.setTypeface(typeface);

@@ -4,17 +4,26 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 
 
+import com.trendyol.bubblescrollbarlib.BubbleScrollBar;
+import com.trendyol.bubblescrollbarlib.BubbleTextProvider;
+
 import java.util.ArrayList;
+import java.util.Objects;
+
 
 public class ItemsPage extends AppCompatActivity {
 
@@ -579,10 +588,21 @@ public class ItemsPage extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        RecyclerView recycler_view = findViewById(R.id.recycler_view);
+        BubbleScrollBar bubble_scroll = findViewById(R.id.bubbleScrollBar);
+
         adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recycler_view.setAdapter(adapter);
+        recycler_view.setLayoutManager(new GridLayoutManager(this, 3));
+
+        bubble_scroll.attachToRecyclerView(recycler_view);
+        bubble_scroll.setBubbleTextProvider (new BubbleTextProvider()
+        {
+            @Override
+            public String provideBubbleText(int i) {
+                return adapter.mImageNames.get(Math.round((float)(i/3)));
+            }
+        });
     }
 
     // search bar

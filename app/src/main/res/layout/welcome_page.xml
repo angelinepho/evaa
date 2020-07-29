@@ -6,39 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context=".WelcomePage">
-
-    <ImageView
-        android:id="@+id/ivEarth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginBottom="0dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/earth"
-        app:srcCompat="@drawable/ic_earth" />
 
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/custom_welcome_white"
+        android:elevation="10dp"
         android:fontFamily="@font/oswald"
-        android:gravity="center_horizontal"
-        android:text="@string/welcome"
-        android:textSize="36sp" />
-
-    <TextView
-        android:id="@+id/swipe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="bottom|center_horizontal"
-        android:text="@string/swipe"
-        android:textColor="@color/colorDivider"
-        android:textSize="24sp" />
+        android:paddingLeft="50dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
+        android:text="Hello,"
+        android:textColor="@android:color/background_dark"
+        android:textSize="40dp" />
 
 </LinearLayout>

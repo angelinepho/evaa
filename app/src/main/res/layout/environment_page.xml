@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:fontFamily="@font/oswald"
-    android:background="#d8eff7"
     android:orientation="vertical"
     tools:context=".Environment">
 
     <ProgressBar
         android:id="@+id/determinateBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:progressDrawable="@drawable/custom_progressbar"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:progress="25"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:progress="25"
+        android:progressDrawable="@drawable/custom_progressbar" />
 
     <Button
         android:id="@+id/btnItemSearch"
