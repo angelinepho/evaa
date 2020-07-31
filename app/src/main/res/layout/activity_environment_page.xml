@@ -5,21 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fontFamily="@font/oswald"
-    android:background="@drawable/test_2"
+    android:background="@drawable/park_1"
     android:orientation="vertical"
     tools:context=".Environment">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/park_1" />-->
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:progressDrawable="@drawable/custom_progressbar"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:progress="25"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:progress="25"
+        android:progressDrawable="@drawable/custom_progressbar" />
 
     <ImageButton
         android:id="@+id/btnLogger"

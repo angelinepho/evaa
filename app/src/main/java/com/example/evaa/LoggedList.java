@@ -39,13 +39,10 @@ public class LoggedList extends AppCompatActivity {
 
         DatabaseHelper databaseHelper = new DatabaseHelper(LoggedList.this);
         displayList = databaseHelper.getData();
-        displayList.add("Orange");
-
 
         adapter = new ArrayAdapter<String>(LoggedList.this, android.R.layout.simple_list_item_1, displayList);
         listLogged.setAdapter(adapter);
     }
 
-
-
+//    public List<String>
 }
