@@ -1,15 +1,18 @@
 package com.example.evaa;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 public class WelcomePage extends AppCompatActivity {
 
@@ -33,6 +36,7 @@ public class WelcomePage extends AppCompatActivity {
                 slideTransition();
             }
         });
+
     }
 
     public void slideTransition() {
