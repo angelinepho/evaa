@@ -26,7 +26,7 @@ public class FunFactDialog extends AppCompatDialogFragment {
             add("The average person generates over 4 pounds of trash every day and about 1.5 tons of solid waster per year.");
             add("The EPA estimates that 75% of the American waste stream is recyclable, but we only recycle about 30% of it.");
             add("We generate 21.5 million tons of food waster each year. If we composted that food, it would reduce the same amount of greenhouse gas as taking 2 million cars off the road.");
-            add("Recyling one aluminum can saves enough enerdy to listen to a full album on your iPod. Recycling 100 cans could light your bedroom for two whole weeks.");
+            add("Recycling one aluminum can saves enough energy to listen to a full album on your iPod. Recycling 100 cans could light your bedroom for two whole weeks.");
             add("Over 87% of Americans have access to curbside or drop-off paper recycling programs.");
             add("New York City residents throw out enough garbage each day to fill the entire Empire State Building.");
             add("Packaging represents about 65% of household trash.");
@@ -43,18 +43,11 @@ public class FunFactDialog extends AppCompatDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.custom_dialog, null);
 
-        builder.setView(view)
-                .setTitle("Here's a random fact!")
-                .setPositiveButton("X", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Closes dialog
-                    }
-                });
+        builder.setView(view).setTitle("Fun Fact");
         fact = view.findViewById(R.id.fact);
         randomizeFact();
         return builder.create();

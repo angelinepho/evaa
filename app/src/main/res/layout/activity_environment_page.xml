@@ -39,5 +39,4 @@
         android:scaleType="fitEnd"
         android:src="@drawable/ic_three_bars" />
 
-
 </LinearLayout>

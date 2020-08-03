@@ -37,9 +37,6 @@ dependencies {
     // toasty
     implementation 'com.github.GrenderG:Toasty:1.4.2'
 
-    // scroll
-    implementation 'com.github.Trendyol:BubbleScrollBar:0.1'
-
 }
 
 apply plugin: 'com.google.gms.google-services'

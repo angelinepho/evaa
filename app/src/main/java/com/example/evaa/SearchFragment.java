@@ -1,31 +1,19 @@
 package com.example.evaa;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-
-
-import com.trendyol.bubblescrollbarlib.BubbleScrollBar;
-import com.trendyol.bubblescrollbarlib.BubbleTextProvider;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-
-public class ItemsPage extends AppCompatActivity {
+public class SearchFragment extends Fragment {
 
     RecyclerViewAdapter adapter;
 
@@ -34,12 +22,22 @@ public class ItemsPage extends AppCompatActivity {
     private ArrayList<String> mAlternative = new ArrayList<>();
     private ArrayList<String> mDisposal = new ArrayList<>();
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.items_page);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         initImageBitmaps();
+
+        RecyclerView recycler_view = rootView.findViewById(R.id.recycler_view);
+
+        adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, getActivity());
+        recycler_view.setAdapter(adapter);
+        recycler_view.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+
+
+        return rootView;
+
     }
 
     private void initImageBitmaps() {
@@ -63,6 +61,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Food storage: Use reusable silicone or glass containers.\r\nBaking: Use silicone baking sheets or parchment paper.\r\nGrilling purposes: Use a reusable grill basket or grill mesh mats.");
         mDisposal.add("This item may be recyclable depending on your hauler. Please contact your hauler to see if they accept this material.");
 
+        mImageUrls.add(R.drawable.ic_aluminum_tray);
+        mNames.add("Aluminum Tray");
+        mAlternative.add("Use glass or metal containers.");
+        mDisposal.add("1. Clean off any crumbs or remaining residue on it.\r\n2. Scrunch up the tray and discard of in the recycling.");
+
         mImageUrls.add(R.drawable.ic_ammunition);
         mNames.add("Ammunition");
         mAlternative.add("Biodegradable Bullets");
@@ -72,6 +75,11 @@ public class ItemsPage extends AppCompatActivity {
         mNames.add("Animal Bedding");
         mAlternative.add("Find brands that are responsible and uphold environmental practices.");
         mDisposal.add("Put this item in your trash.");
+
+        mImageUrls.add(R.drawable.ic_animal_hair);
+        mNames.add("Animal Hair/Shedding");
+        mAlternative.add("Not available");
+        mDisposal.add("This can be reused in personal products, such as cushion stuffing. Otherwise, it can be disposed of in recycling.");
 
         mImageUrls.add(R.drawable.ic_animal_waste);
         mNames.add("Animal Waste");
@@ -113,6 +121,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Not available");
         mDisposal.add("Return lead-acid auto batteries for recycling at retail stores that sell such batteries. Some towns accept lead-acid auto batteries at their local transfer station.");
 
+        mImageUrls.add(R.drawable.ic_balloons);
+        mNames.add("Balloons");
+        mAlternative.add("Paper: Lanterns, planes, kites, pinwheels, streamers, crackers, origami");
+        mDisposal.add("1. Deflate.\r\n2. Cut any balloons and ribbon into small pieces.\r\n3. Seal them tightly in a bag before discarding them in the trash.\r\n4. Skip helium balloons, especially outdoors.");
+
         mImageUrls.add(R.drawable.ic_ballpen);
         mNames.add("Ballpoint Pens");
         mAlternative.add("Fountain pen");
@@ -127,6 +140,16 @@ public class ItemsPage extends AppCompatActivity {
         mNames.add("Bedding/Bed Sheets");
         mAlternative.add("Look for sustainable bedding brands that uphold environmental and ethical standards. This can include companies that practice zero waste and fair trade.");
         mDisposal.add("Donate usable bedding materials and linens. Place unusable items in the trash.");
+
+        mImageUrls.add(R.drawable.ic_beer);
+        mNames.add("Beer Bottle");
+        mAlternative.add("Glass is a great alternative to plastic, as it is 100% recyclable. Consider reusing purchased beer bottles. ");
+        mDisposal.add("Broken glass is hazardous and should be wrapped in newspaper or a plastic bag, then disposed of in the trash. Whole beer bottles should be separated from their lids and recycled separately to ensure all liquids are removed.");
+
+        mImageUrls.add(R.drawable.ic_bike);
+        mNames.add("Bicycle");
+        mAlternative.add("Walking");
+        mDisposal.add("You can donate your bicycle or recycle it at your local specialty recycling facility.");
 
         mImageUrls.add(R.drawable.ic_books_textbooks);
         mNames.add("Books");
@@ -148,6 +171,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Buy candy in bulk and choose candies with bio-based packaging, like M&Ms. Consider using the wrapper to make something.");
         mDisposal.add("Put this item in your trash.");
 
+        mImageUrls.add(R.drawable.ic_can);
+        mNames.add("Canned Food");
+        mAlternative.add("Not available");
+        mDisposal.add("1. Empty out can in the composting bin before rinsing.\r\n2. Clean container and place in recycling bin.");
+
         mImageUrls.add(R.drawable.ic_cardboard);
         mNames.add("Cardboard");
         mAlternative.add("If needed, large plastic tubs can replace cardboard boxes.");
@@ -163,6 +191,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Find 100% compostable chip bags.");
         mDisposal.add("Put this item in your trash.");
 
+        mImageUrls.add(R.drawable.ic_christmas);
+        mNames.add("Christmas Lights");
+        mAlternative.add("Use LED Christmas Lights for less energy consumption.");
+        mDisposal.add("1. Contact your city’s municipal solid waste office.\r\n2. Ship your lights to Holiday LED recycling or Christmas Light source.");
+
         mImageUrls.add(R.drawable.ic_christmas_tree_artificial);
         mNames.add("Christmas Tree (artificial)");
         mAlternative.add("1. Rent a tree.\r\n2. Decorate a plant or tree you already have.\r\n3. Make a ladder, driftwood, or book tree.\r\n4. Buy second hand.\r\n5. Get Creative!");
@@ -173,10 +206,20 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("1. Rent a tree.\r\n2. Decorate a plant or tree you already have.\r\n3. Make a ladder, driftwood, or book tree.\r\n4. Buy second hand.\r\n5. Get Creative!");
         mDisposal.add("It is illegal to place yard waste like Christmas trees in the trash. Remove all tinsel, lights, decorations, tree stands, and plastic bags from Christmas trees prior to collection. Leave out for garbage haulers to pick-up, but some haulers require residents to schedule a pick-up time Contact your haulers for more details. ");
 
+        mImageUrls.add(R.drawable.ic_cleaning);
+        mNames.add("Cleaning Products");
+        mAlternative.add("Create your own personal cleaning supplies at home, use naturally occurring products such as bleach, or subscribe to sustainable refill cleaning brands such as Blueland.");
+        mDisposal.add("Use it up or give it away. Read the label for proper disposal instructions. Most liquid, gel, and powder water-soluble household cleaning products can be disposed of down the drain with running water. While most solid products can be placed in the trash. Most household cleaning products also come in containers that are recyclable.");
+
         mImageUrls.add(R.drawable.ic_clothes);
         mNames.add("Clothes");
         mAlternative.add("Avoid buying unnecessary clothing. If that is not possible, buy second hand or from sustainable companies such as Patagonia, Reformation, etc. Also, look for eco-friendly fibers such as linen, hemp, bamboo, lyocell, alpaca, organic wool, and silk.");
         mDisposal.add("If reuse or donation is not an option, place clothing and shoes in the garbage.");
+
+        mImageUrls.add(R.drawable.ic_clothespin);
+        mNames.add("Clothespins");
+        mAlternative.add("Bamboo Clothespins");
+        mDisposal.add("Use clothespin for a fun project.");
 
         mImageUrls.add(R.drawable.ic_coal_ash);
         mNames.add("Coal Ash");
@@ -203,8 +246,13 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Purchase makeup from eco-friendly brands. Research and read reviews beforehand to limit the amount of products you purchase. Avoid single-use products, such as cotton pads and makeup-remover wipes, by looking into alternatives.");
         mDisposal.add("Various programs, such as TerraCycle and Return to Origins, accept makeup containers and will recycle them for you. Alternatively, look into reusing empty containers and products.");
 
+        mImageUrls.add(R.drawable.ic_cotton);
+        mNames.add("Cotton Balls");
+        mAlternative.add("Reusable cloth pads");
+        mDisposal.add("Put this item in your trash.");
+
         mImageUrls.add(R.drawable.ic_cotton_balls_rounds);
-        mNames.add("Cotton Balls/Rounds");
+        mNames.add("Cotton Pads/Rounds");
         mAlternative.add("Reusable cloth pads");
         mDisposal.add("Put this item in your trash.");
 
@@ -217,6 +265,11 @@ public class ItemsPage extends AppCompatActivity {
         mNames.add("Crayons");
         mAlternative.add("Crayons made from soy or beeswax");
         mDisposal.add("Small crayon pieces can be melted and turned into new crayons. Organizations, like the National Crayon Recycle Program or Crayola ColorCycle, accept and upcycle old crayons into new crayons.");
+
+        mImageUrls.add(R.drawable.ic_decorative_lights);
+        mNames.add("Decorative Lights");
+        mAlternative.add("Use LED Decorative Lights for less energy consumption.");
+        mDisposal.add("1. Contact your city’s municipal solid waste office.\r\n2. Ship your lights to Holiday LED recycling or Decorative Light source.");
 
         mImageUrls.add(R.drawable.ic_deodorant);
         mNames.add("Deodorant");
@@ -240,7 +293,7 @@ public class ItemsPage extends AppCompatActivity {
 
         mImageUrls.add(R.drawable.ic_disposable_razor);
         mNames.add("Disposable Plastic Razors");
-        mAlternative.add("Purchase a razor handle that utilizes razor blade refills or use an electric shaver.");
+        mAlternative.add("Purchase a razor handle that utilizes stainless steel razor blade refills or use an electric shaver.");
         mDisposal.add("1. Rinse and allow the razor to dry./r/n2. Visit TerraCycle to download a free shipping label to send your razor.");
 
         mImageUrls.add(R.drawable.ic_dryer);
@@ -257,6 +310,11 @@ public class ItemsPage extends AppCompatActivity {
         mNames.add("E-reader");
         mAlternative.add("Not available");
         mDisposal.add("Drop-off at electronic waste collections (e.g. Best Buy, Office Depot/Max)");
+
+        mImageUrls.add(R.drawable.ic_salt);
+        mNames.add("Exfoliant/Scrubs (microbeads)");
+        mAlternative.add("DIY Natural Exfoliant/Scrubs");
+        mDisposal.add("Tighten the lid of the container and dispose of it in the garbage.");
 
         mImageUrls.add(R.drawable.ic_fabric);
         mNames.add("Fabric Softener");
@@ -283,6 +341,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("LED light bulbs, LED tube lighting, natural lighting, candles, CMH lighting, and Halogen");
         mDisposal.add("Take this to a Household Hazardous Waste disposal facility. Do not put in your home trash or recycling cart without consulting your local disposal agency.");
 
+        mImageUrls.add(R.drawable.ic_food_waste);
+        mNames.add("Food Waste");
+        mAlternative.add("Not available");
+        mDisposal.add("Food waste can be used in composting. Otherwise, it can be disposed of via garbage disposal or trash.");
+
         mImageUrls.add(R.drawable.ic_garden_hose);
         mNames.add("Garden Hose");
         mAlternative.add("Choose natural rubber hoses instead of synthetic ones made from toxic PVC (Polyvinyl Chloride) that contain toxic chemicals and don’t break down well. There are also stainless steel garden hoses available that won’t kink and tangle. Remember not to leave your rubber garden hose out in the sun even for a couple of hours, as not only will it head the water, but it will also accelerate photodegradation.");
@@ -308,6 +371,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Glass is a great alternative to plastic, as it is 100% recyclable. Consider reusing purchased glass jars, such as pasta sauce jars, rather than purchasing a set. ");
         mDisposal.add("Broken glass is hazardous and should be wrapped in newspaper or a plastic bag, then disposed of in the trash. Glassware and Pyrex should be placed in the trash due to their high melting points. Glass jars should be separated from their lids and recycled separately. Be sure to clean jars before disposing of them.");
 
+        mImageUrls.add(R.drawable.ic_glass_bottle);
+        mNames.add("Glass Bottle");
+        mAlternative.add("Glass is a great alternative to plastic, as it is 100% recyclable. Consider reusing purchased glass bottles. ");
+        mDisposal.add("Broken glass is hazardous and should be wrapped in newspaper or a plastic bag, then disposed of in the trash. Whole glass bottles should be separated from their lids and recycled separately to ensure all liquids are removed.");
+
         mImageUrls.add(R.drawable.ic_greeting_cards);
         mNames.add("Greeting Cards");
         mAlternative.add("Send E-Cards, make your own card from scrap material, or pick from a selection of sustainable greeting card brands. For example, Seedy Cards sells plantable greeting cards that produce wild flowers.");
@@ -328,15 +396,40 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Look for brands that operate sustainably in some way. Try to avoid single use plastic. If that is not possible buying the extra large sizes or opting into the refill system can help cut your waster further.");
         mDisposal.add("Bring liquid products and aerosol cans to The Recycling Zone. Dry products can go in the trash. Empty bottles can go in your home recycling cart.");
 
+        mImageUrls.add(R.drawable.ic_hair_tie);
+        mNames.add("Hair Tie");
+        mAlternative.add("Ribbons, hair bands, bandanas, hair clips, chopsticks/pencils, eco-friendly hair ties");
+        mDisposal.add("Recycle with Terracycle.");
+
+        mImageUrls.add(R.drawable.ic_hair_tool);
+        mNames.add("Hair Tools");
+        mAlternative.add("Rather than using hair tools to do your hair, you can braid your hair or use socks to curl it.");
+        mDisposal.add("Drop off your hair tools at your local recycling center.");
+
         mImageUrls.add(R.drawable.ic_headphones);
         mNames.add("Headphones/Earbuds");
         mAlternative.add("Invest in quality headphones to prevent early breakage and frequent disposal.");
         mDisposal.add("If your headphones are beyond repair, contact local recycling facilities for proper disposal or contact electronic stores for possible trade-ins or recycling programs.");
 
+        mImageUrls.add(R.drawable.ic_ironing_board);
+        mNames.add("Ironing Board");
+        mAlternative.add("You can use your floor, a kitchen/bathroom counter, or your bed.");
+        mDisposal.add("Drop off at your local recycling center.");
+
+        mImageUrls.add(R.drawable.ic_jump_rope);
+        mNames.add("Jump Rope");
+        mAlternative.add("Create your own jump rope from plastic bags or other scrap materials.");
+        mDisposal.add("Donate your jump ropes.");
+
         mImageUrls.add(R.drawable.ic_kitchen_oil);
         mNames.add("Kitchen Grease/Cooking Oil");
         mAlternative.add("Not available");
         mDisposal.add("Small amount: let the oil cool in the pan, wipe up with paper towel and discard in trash. Large amount: pour the grease into a can or jar and let it cool, once filled, seal it as best as possible and dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_knife);
+        mNames.add("Knives");
+        mAlternative.add("Not available");
+        mDisposal.add("1. Wrap blades with paper.\r\n2. Secure the knife in cardboard.\r\n\3. Put it in a box/container.\r\n4. Find a place to donate the knife inside of the container.");
 
         mImageUrls.add(R.drawable.ic_lip_balm);
         mNames.add("Lip Balm/ChapStick");
@@ -352,6 +445,11 @@ public class ItemsPage extends AppCompatActivity {
         mNames.add("Lotion");
         mAlternative.add("Aloe vera, shea butter, cocoa butter, olive oil");
         mDisposal.add("Go online and contact your local disposal center to see if they accept cosmetics as hazardous waste. Otherwise, clean out the product as much as you can and then, recycle the item.");
+
+        mImageUrls.add(R.drawable.ic_highlighter);
+        mNames.add("Markers");
+        mAlternative.add("If applicable, go digital.");
+        mDisposal.add("Drop off products at a Staples or ship to a Crayola.");
 
         mImageUrls.add(R.drawable.ic_mascara_wand);
         mNames.add("Mascara Wand");
@@ -383,6 +481,11 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Make your own baking soda mouthwash (combine 2 ounces of water with 1/4 teaspoon of baking soda, 1 drop of pure peppermint oil, and 1 drop of tea tree oil in a reusable container) or herbal antibacterial mouthwash (first place 1 ounce of cloves or powdered myrrh or 2 to 4 ounces of goldenseal or rosemary in a pint-sized jar). You can also try plastic free tablet mouthwash or liquid mouthwash in a glass bottle.");
         mDisposal.add("Rinse the mouthwash bottle and place it in recycling.");
 
+        mImageUrls.add(R.drawable.ic_napkin_holder);
+        mNames.add("Napkins");
+        mAlternative.add("Use cloth napkins or bandanas.");
+        mDisposal.add("Whether it be clean or dirty, napkins should be disposed of in the trash. However, tissue boxes or paper towel cores can be recycled.");
+
         mImageUrls.add(R.drawable.ic_newspaper);
         mNames.add("Newspaper");
         mAlternative.add("When possible, go digital.");
@@ -413,10 +516,20 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Cloth towels/napkins");
         mDisposal.add("Food-soiled, greasy, and chemical towels should be discarded into the garbage while clean paper towels can be composted.");
 
+        mImageUrls.add(R.drawable.ic_parchment_paper);
+        mNames.add("Parchment Paper");
+        mAlternative.add("Greased Pan or Silicone Pad");
+        mDisposal.add("Put your parchment paper in the trash and recycle the box.");
+
         mImageUrls.add(R.drawable.ic_photography_film);
         mNames.add("Photographs/Film");
         mAlternative.add("Go digital!");
         mDisposal.add("This item cannot be recycled. Dispose of in trash.");
+
+        mImageUrls.add(R.drawable.ic_plastic_bag);
+        mNames.add("Plastic Bags");
+        mAlternative.add("Use your own reusable bags/totes.");
+        mDisposal.add("Dispose of in trash or recycle at store-drop off bins and plastic film recycling centers.");
 
         mImageUrls.add(R.drawable.ic_plastic_bread);
         mNames.add("Plastic Bread Bag");
@@ -430,8 +543,13 @@ public class ItemsPage extends AppCompatActivity {
 
         mImageUrls.add(R.drawable.ic_plastic_loofah);
         mNames.add("Plastic Loofah");
-        mAlternative.add("Biodegradable loofah from a Luffa Gourd plant");
+        mAlternative.add("Biodegradable loofah from a luffa gourd plant");
         mDisposal.add("Reuse it in some way or discard in the trash.");
+
+        mImageUrls.add(R.drawable.ic_plastic_produce_bag);
+        mNames.add("Plastic Produce Bags");
+        mAlternative.add("Use your own cotton mesh reusable produce bags.");
+        mDisposal.add("Dispose of in trash or recycle at store-drop off bins and plastic film recycling centers.");
 
         mImageUrls.add(R.drawable.ic_plastic_shopping_bag);
         mNames.add("Plastic Shopping Bag");
@@ -463,6 +581,16 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Beeswax wraps");
         mDisposal.add("This item cannot be recycled. Dispose of in trash.");
 
+        mImageUrls.add(R.drawable.ic_post_it);
+        mNames.add("Post-it/Sticky Notes");
+        mAlternative.add("Reusable sticky notes, eco-friendly office supplies");
+        mDisposal.add("Post-it can be recycled.");
+
+        mImageUrls.add(R.drawable.ic_poultry);
+        mNames.add("Poultry Shrink Bags");
+        mAlternative.add("Not available");
+        mDisposal.add("Clean well to remove meat grease residue and dry completely. Place in recycling afterwards.");
+
         mImageUrls.add(R.drawable.ic_razor_blade_refills);
         mNames.add("Razor Blade Refills");
         mAlternative.add("Electric shaver");
@@ -478,10 +606,50 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Find an eco-friendly fridge design that is made to save energy. For example, some newer fridges have the ability to adjust to the temperature outside. Some more environmental designs include LG PANORAMA French Door Refrigerator, Oceania: Fridge designed by Tez Patel, 6596 Refrigerator from Kenmore, and RF266ABPN Refrigerator from Samsung.");
         mDisposal.add("It is illegal to place major appliances in household garbage because they have components that are harmful to health and the environment. Donate/resell working appliances or contact your local waste removal service to schedule a pick-up.");
 
+        mImageUrls.add(R.drawable.ic_remote_control);
+        mNames.add("Remotes");
+        mAlternative.add("Check to see if your electronic device has a related smartphone app.");
+        mDisposal.add("Drop off at a major electronics store such as Best Buy or Office Depot.");
+
+        mImageUrls.add(R.drawable.ic_rope);
+        mNames.add("Rope");
+        mAlternative.add("Find ropes that are made from eco-friendly materials such as recycled synthetic and natural fibers. Avoid purchasing ropes with polyester, nylon, acrylic, and elastane.");
+        mDisposal.add("You can donate your rope or put it in the trash.");
+
+        mImageUrls.add(R.drawable.ic_rubber_bands);
+        mNames.add("Rubber Bands");
+        mAlternative.add("String, staples, paper clips");
+        mDisposal.add("You can visit your local post office to donate them.");
+
+        mImageUrls.add(R.drawable.ic_sew);
+        mNames.add("Sewing Needle");
+        mAlternative.add("Not available");
+        mDisposal.add("Wrap needles in paper before discarding in trash or drop it off at your local metal recycler.");
+
+        mImageUrls.add(R.drawable.ic_bobbin);
+        mNames.add("Sewing Thread/Bobbin");
+        mAlternative.add("Purchase 100% recycled polyester threads or look for sustainable materials such as organic cotton and hemp threads.");
+        mDisposal.add("You can compost natural sewing thread fibers (e.g. cotton and hemp), but not 100% synthetic fibers (e.g. nylon and polyester). As for the sewing spool, you can discard of it in recycling.");
+
         mImageUrls.add(R.drawable.ic_shampoo_bottle);
         mNames.add("Shampoo Bottle");
         mAlternative.add("Shampoo bars");
         mDisposal.add("Fully utilize shampoo mixture. Bottle can be recycled if made from #1 plastic(PET) or #2 plastic(HDPE), which are accepted by most curbside recycling programs. Most recycling programs ask for rinsed bottles before recycling. Check with your local program whether or not caps should be kept on the bottle. You can leave the label on the product.");
+
+        mImageUrls.add(R.drawable.ic_shampoo_bottle);
+        mNames.add("Shampoo Bottle");
+        mAlternative.add("Shampoo bars");
+        mDisposal.add("Fully utilize shampoo mixture. Bottle can be recycled if made from #1 plastic(PET) or #2 plastic(HDPE), which are accepted by most curbside recycling programs. Most recycling programs ask for rinsed bottles before recycling. Check with your local program whether or not caps should be kept on the bottle. You can leave the label on the product.");
+
+        mImageUrls.add(R.drawable.ic_cream);
+        mNames.add("Shaving Cream");
+        mAlternative.add("Avoid mainstream brands that use chemicals and palm oil. Use nontoxic shaving cream from brands like Lush Cosmetics or use natural oils like coconut oil or cocoa butter.");
+        mDisposal.add("1. Clean out your shaving cream can by using all the content and removing the lid to dry out the can.\r\n2. Place this item in the recycling.");
+
+        mImageUrls.add(R.drawable.ic_shoe_laces);
+        mNames.add("Shoelaces");
+        mAlternative.add("Recycled shoelaces or organic laces such as hemp or organic cotton");
+        mDisposal.add("Shoelaces can be donated if they are in good condition. Otherwise, put this item in your trash.");
 
         mImageUrls.add(R.drawable.ic_shoes);
         mNames.add("Shoes");
@@ -493,6 +661,26 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Soap bar wrapped in cardboard or paper, biodegradable soap");
         mDisposal.add("Use soap fully and recycle plastic wrapping.");
 
+        mImageUrls.add(R.drawable.ic_soda_bottle);
+        mNames.add("Soda Bottle (plastic)");
+        mAlternative.add("Find biodegradable soft drink packaging or bring your own reusable drink container to a soft drink refill station.");
+        mDisposal.add("Put this item in your recycling.");
+
+        mImageUrls.add(R.drawable.ic_soda_can);
+        mNames.add("Soda Can");
+        mAlternative.add("Find biodegradable soft drink packaging or bring your own reusable drink container to a soft drink refill station.");
+        mDisposal.add("Put this item in your recycling.");
+
+        mImageUrls.add(R.drawable.ic_washing_dishes);
+        mNames.add("Sponge (synthetic)");
+        mAlternative.add("Hemp scourer, heavy duty sponge, eco sponge, cellulose sponge, plant fiber dish brush, washing up scraper, recycled washing up brush, etc. Synthetic sponges will produce microplastics.");
+        mDisposal.add("Put this item in your trash.");
+
+        mImageUrls.add(R.drawable.ic_sticker);
+        mNames.add("Stickers");
+        mAlternative.add("Look for sustainably sourced wood, environmentally friendly packaging, and biodegradable stickers.");
+        mDisposal.add("The sticky adhesive gets caught in recycling equipment, so stickers should be NOT be thrown in the recycling bin. The only exception is Post-It Sticky Notes that have been engineered to break down in the recycling process.");
+
         mImageUrls.add(R.drawable.ic_stove);
         mNames.add("Stove");
         mAlternative.add("Slow cooker/crock-Pot, microwave, hot plate, convection oven");
@@ -503,10 +691,20 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Mushroom material, plantable packaging, edible packing peanuts, InCycle Cups, bamboo fiber eco bowl, EarthAware biodegradable packing material, etc. ");
         mDisposal.add("This item cannot be recycled. Dispose of in trash.");
 
+        mImageUrls.add(R.drawable.ic_sunscreen);
+        mNames.add("Sunscreen");
+        mAlternative.add("Create your own reef safe sunscreen at home or use natural options such as aloe vera.");
+        mDisposal.add("1. Rinse container.\r\n2. Dispose of in garbage or a hazardous waste collection facility.");
+
         mImageUrls.add(R.drawable.ic_tampon);
         mNames.add("Tampons");
         mAlternative.add("Sustainable feminine hygiene products include organic cotton pads and tampons, reusable pads and tampons, diva cups, and reusable period panties");
         mDisposal.add("Tampons cannot be reused; put this item in your trash.");
+
+        mImageUrls.add(R.drawable.ic_tape);
+        mNames.add("Tape");
+        mAlternative.add("Use eco-friendly tapes such as Tesa.");
+        mDisposal.add("Dispose of in trash.");
 
         mImageUrls.add(R.drawable.ic_teabag);
         mNames.add("Tea Bags");
@@ -568,70 +766,44 @@ public class ItemsPage extends AppCompatActivity {
         mAlternative.add("Not available");
         mDisposal.add("Many jewelry stores will recycle these batteries when you bring your watch in to have the battery replaced. If not, please bring it to a Household Hazardous Waste (HHW) collection in your area. ");
 
+        mImageUrls.add(R.drawable.ic_depilation);
+        mNames.add("Waxing (hair removal)");
+        mAlternative.add("Sugar waxing");
+        mDisposal.add("Fold the wax strips and dispose of them in the garbage.");
+
+        mImageUrls.add(R.drawable.ic_wine_bottle);
+        mNames.add("Wine Bottle");
+        mAlternative.add("Glass is a great alternative to plastic, as it is 100% recyclable. Consider reusing purchased wine bottles. ");
+        mDisposal.add("Broken glass is hazardous and should be wrapped in newspaper or a plastic bag, then disposed of in the trash. Whole wine bottles should be separated from their lids and recycled separately to ensure all liquids are removed.");
+
         mImageUrls.add(R.drawable.ic_wood_fireplace_ash);
         mNames.add("Wood/Fireplace Ash");
         mAlternative.add("Not available");
         mDisposal.add("There are uses for wood ash and ash from the fireplace assuming you didn't use burn treated or painted wood. It can be used in your compost pile (very small amount), as an insect repellent (sprinkle small amounts around the perimeter of your garden to deter slugs and snails), or applied to your soil if you need to raise the pH. Treated or painted/stained wood should not be burned, as it emits toxins into the air and results in contaminated ash.");
+
+        mImageUrls.add(R.drawable.ic_yarn);
+        mNames.add("Yarn");
+        mAlternative.add("Avoid purchasing yarn that use acrylics, nylon, polyester, and synthetic dyes.\r\nLook for yarns made of hemp, organic cotton, tencel (lyocell), bamboo, linen, or other eco-friendly fabric.");
+        mDisposal.add("1. Dispose yarn scraps in the garbage bin. 2. Donate yarn to your local charity. ");
+
+        mImageUrls.add(R.drawable.ic_yoga_mat);
+        mNames.add("Yoga Mats");
+        mAlternative.add("Biodegradable yoga mats");
+        mDisposal.add("1. Contact your local recycling center and see if they accept yoga mats.\r\n2. Clean up the product before dropping it off at your local recycling center.");
 
         mImageUrls.add(R.drawable.ic_zinc);
         mNames.add("Zinc-Air Batteries");
         mAlternative.add("Not available");
         mDisposal.add("Bring the batteries to a Household Hazardous Waste (HHW) collection in your area.");
 
+        mImageUrls.add(R.drawable.ic_zip_tie);
+        mNames.add("Zip/Cable Tie");
+        mAlternative.add("Velcro straps, biodegradable zip ties");
+        mDisposal.add("1. Place zip ties in a plastic bag.\r\n2. Drop off items at your local recycling center.");
+
         mImageUrls.add(R.drawable.ic_ziploc_bag);
         mNames.add("Ziploc/Sandwich Bags");
         mAlternative.add("Storage containers, Reusable storage bags, Wash and reuse bags");
         mDisposal.add("1. Rinse and allow the bag to dry completely./r/n2. Bring to a film plastic recycling center.");
-
-//        mImageUrls.add(R.drawable.ic_);
-//        mNames.add("");
-//        mAlternative.add("");
-//        mDisposal.add("");
-
-        initRecyclerView();
-    }
-
-    private void initRecyclerView() {
-        RecyclerView recycler_view = findViewById(R.id.recycler_view);
-        BubbleScrollBar bubble_scroll = findViewById(R.id.bubbleScrollBar);
-
-        adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, this);
-        recycler_view.setAdapter(adapter);
-        recycler_view.setLayoutManager(new GridLayoutManager(this, 3));
-
-        bubble_scroll.attachToRecyclerView(recycler_view);
-        bubble_scroll.setBubbleTextProvider (new BubbleTextProvider()
-        {
-            @Override
-            public String provideBubbleText(int i) {
-                return adapter.mImageNames.get(Math.round((float)(i/3)));
-            }
-        });
-    }
-
-    // search bar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.image_menu, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
     }
 }

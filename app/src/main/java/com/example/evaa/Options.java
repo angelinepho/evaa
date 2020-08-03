@@ -2,69 +2,57 @@ package com.example.evaa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Options extends AppCompatActivity {
-
-    TextView tvInstruction;
-    Button btnItemSearch, btnEnvironment;
-    BottomNavigationView bottom_navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        tvInstruction = findViewById(R.id.tvInstruction);
-        btnItemSearch = findViewById(R.id.btnItemSearch);
-        btnEnvironment = findViewById(R.id.btnEnvironment);
-        bottom_navigation = findViewById(R.id.bottom_navigation);
-        bottom_navigation.setOnNavigationItemSelectedListener( mOnNavigationItemSelectedListener);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        btnItemSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Options.this,
-                        ItemsPage.class);
-                startActivity(intent);
-            }
-        });
-
-        btnEnvironment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Options.this,
-                        Environment.class);
-                startActivity(intent);
-            }
-        });
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new HomeFragment())
+                    .commit();
+        }
 
         openDialog();
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            return false;
-        }
+            Fragment selectedFragment = null;
 
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    selectedFragment = new HomeFragment();
+                    break;
+                case R.id.nav_search:
+                    selectedFragment = new SearchFragment();
+                    break;
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+            return true;
+        }
     };
 
     public void openDialog() {
         FunFactDialog dialog = new FunFactDialog();
         dialog.show(getSupportFragmentManager(), "This is openDialog()");
     }
-
-
 
 }

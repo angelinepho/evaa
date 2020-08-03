@@ -12,11 +12,7 @@
         <activity android:name=".LoggedList"></activity>
         <activity android:name=".SelectedItem" />
         <activity android:name=".Environment" />
-        <activity
-            android:name=".ItemsPage"
-            android:theme="@style/AppThemeActionBar" />
-        <activity android:name=".Options" />
-        <activity android:name=".WelcomePage">
+        <activity android:name=".Options">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -4,16 +4,12 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <ImageView
-        android:src="@drawable/custom_textbubble"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="center" />
-
     <TextView
         android:id="@+id/fact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fun Fact this is."/>
+        android:gravity="center"
+        android:text="Fun Fact this is."
+        android:textSize="18sp" />
 
 </RelativeLayout>
