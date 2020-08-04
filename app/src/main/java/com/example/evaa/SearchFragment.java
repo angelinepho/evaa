@@ -15,11 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import com.futuremind.recyclerviewfastscroll.FastScroller;
+
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
     RecyclerViewAdapter adapter;
+    FastScroller fastScroller;
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<Integer> mImageUrls = new ArrayList<>();
@@ -34,10 +37,12 @@ public class SearchFragment extends Fragment {
         initImageBitmaps();
 
         RecyclerView recycler_view = rootView.findViewById(R.id.recycler_view);
+        fastScroller = rootView.findViewById(R.id.fastscroll);
 
         adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, getActivity());
         recycler_view.setAdapter(adapter);
         recycler_view.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        fastScroller.setRecyclerView(recycler_view);
 
         return rootView;
     }
@@ -448,6 +453,16 @@ public class SearchFragment extends Fragment {
         mAlternative.add("Aloe vera, shea butter, cocoa butter, olive oil");
         mDisposal.add("Go online and contact your local disposal center to see if they accept cosmetics as hazardous waste. Otherwise, clean out the product as much as you can and then, recycle the item.");
 
+        mImageUrls.add(R.drawable.ic_cosmetic);
+        mNames.add("Makeup");
+        mAlternative.add("Purchase makeup from eco-friendly brands. Research and read reviews beforehand to limit the amount of products you purchase. Avoid single-use products, such as cotton pads and makeup-remover wipes, by looking into alternatives.");
+        mDisposal.add("Various programs, such as TerraCycle and Return to Origins, accept makeup containers and will recycle them for you. Alternatively, look into reusing empty containers and products.");
+
+        mImageUrls.add(R.drawable.ic_makeup_wipes);
+        mNames.add("Makeup Wipes");
+        mAlternative.add("Avoid single-use products, such as makeup-remover wipes, look into natural face washes and reusable manual face cleansers.");
+        mDisposal.add("Do not flush these down the toilet. Put this item in your trash.");
+
         mImageUrls.add(R.drawable.ic_highlighter);
         mNames.add("Markers");
         mAlternative.add("If applicable, go digital.");
@@ -523,6 +538,11 @@ public class SearchFragment extends Fragment {
         mAlternative.add("Greased Pan or Silicone Pad");
         mDisposal.add("Put your parchment paper in the trash and recycle the box.");
 
+        mImageUrls.add(R.drawable.ic_pasta);
+        mNames.add("Pasta Noodles");
+        mAlternative.add("Look for pasta noodles in eco-friendly packaging.");
+        mDisposal.add("Put this item in your compost or trash.");
+
         mImageUrls.add(R.drawable.ic_photography_film);
         mNames.add("Photographs/Film");
         mAlternative.add("Go digital!");
@@ -586,7 +606,7 @@ public class SearchFragment extends Fragment {
         mImageUrls.add(R.drawable.ic_post_it);
         mNames.add("Post-it/Sticky Notes");
         mAlternative.add("Reusable sticky notes, eco-friendly office supplies");
-        mDisposal.add("Post-it can be recycled.");
+        mDisposal.add("Post-it notes can be recycled.");
 
         mImageUrls.add(R.drawable.ic_poultry);
         mNames.add("Poultry Shrink Bags");
@@ -632,11 +652,6 @@ public class SearchFragment extends Fragment {
         mNames.add("Sewing Thread/Bobbin");
         mAlternative.add("Purchase 100% recycled polyester threads or look for sustainable materials such as organic cotton and hemp threads.");
         mDisposal.add("You can compost natural sewing thread fibers (e.g. cotton and hemp), but not 100% synthetic fibers (e.g. nylon and polyester). As for the sewing spool, you can discard of it in recycling.");
-
-        mImageUrls.add(R.drawable.ic_shampoo_bottle);
-        mNames.add("Shampoo Bottle");
-        mAlternative.add("Shampoo bars");
-        mDisposal.add("Fully utilize shampoo mixture. Bottle can be recycled if made from #1 plastic(PET) or #2 plastic(HDPE), which are accepted by most curbside recycling programs. Most recycling programs ask for rinsed bottles before recycling. Check with your local program whether or not caps should be kept on the bottle. You can leave the label on the product.");
 
         mImageUrls.add(R.drawable.ic_shampoo_bottle);
         mNames.add("Shampoo Bottle");

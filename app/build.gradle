@@ -37,6 +37,9 @@ dependencies {
     // toasty
     implementation 'com.github.GrenderG:Toasty:1.4.2'
 
+    // fast scroll
+    implementation 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

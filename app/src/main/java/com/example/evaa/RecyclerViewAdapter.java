@@ -14,11 +14,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable, SectionTitleProvider {
 
     public ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mImageNamesFull;  // for search
@@ -83,7 +85,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mImageNames.size();
     }
 
-
     // filterable method
     @Override
     public Filter getFilter() {
@@ -133,6 +134,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             notifyDataSetChanged();
         }
     };
+
+    // fast scroll
+    @Override
+    public String getSectionTitle(int position) {
+        return mImageNames.get(position).substring(0, 1);
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
