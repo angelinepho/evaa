@@ -19,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeFragment extends Fragment {
 
     TextView tvInstruction;
-    Button btnItemSearch, btnEnvironment;
+    Button btnEnvironment;
 
     @Nullable
     @Override
@@ -28,17 +28,16 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         tvInstruction = rootView.findViewById(R.id.tvInstruction);
-        btnItemSearch = rootView.findViewById(R.id.btnItemSearch);
         btnEnvironment = rootView.findViewById(R.id.btnEnvironment);
 
-        btnItemSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new SearchFragment())
-                        .commit();
-            }
-        });
+//        btnItemSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getFragmentManager().beginTransaction()
+//                        .replace(R.id.fragment_container, new SearchFragment())
+//                        .commit();
+//            }
+//        });
 
         btnEnvironment.setOnClickListener(new View.OnClickListener() {
             @Override

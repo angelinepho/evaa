@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -25,7 +29,7 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         initImageBitmaps();
 
@@ -35,13 +39,11 @@ public class SearchFragment extends Fragment {
         recycler_view.setAdapter(adapter);
         recycler_view.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
-
         return rootView;
-
     }
 
     private void initImageBitmaps() {
-        mImageUrls.add(R.drawable.ic_bandage_band_aid);
+        mImageUrls.add(R.drawable.ic_band_aid);
         mNames.add("Adhesive Bandages");
         mAlternative.add("Biodegradable adhesive bandages, DIY Kombucha SCOBY remedy");
         mDisposal.add("Put this item in your trash.");
@@ -66,7 +68,7 @@ public class SearchFragment extends Fragment {
         mAlternative.add("Use glass or metal containers.");
         mDisposal.add("1. Clean off any crumbs or remaining residue on it.\r\n2. Scrunch up the tray and discard of in the recycling.");
 
-        mImageUrls.add(R.drawable.ic_ammunition);
+        mImageUrls.add(R.drawable.ic_bullet);
         mNames.add("Ammunition");
         mAlternative.add("Biodegradable Bullets");
         mDisposal.add("Do not put ammunition in the trash. To properly dispose of old or excess ammunition, contact your local police/public safety department or state police to surrender the ammunition.");
@@ -805,5 +807,30 @@ public class SearchFragment extends Fragment {
         mNames.add("Ziploc/Sandwich Bags");
         mAlternative.add("Storage containers, Reusable storage bags, Wash and reuse bags");
         mDisposal.add("1. Rinse and allow the bag to dry completely./r/n2. Bring to a film plastic recycling center.");
+    }
+
+    // search bar
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.image_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = new SearchView(((Options) getActivity()).getSupportActionBar().getThemedContext());
+        searchView.setQueryHint("Item Search");
+
+        item.setActionView(searchView);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
     }
 }
