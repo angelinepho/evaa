@@ -30,15 +30,6 @@ public class HomeFragment extends Fragment {
         tvInstruction = rootView.findViewById(R.id.tvInstruction);
         btnEnvironment = rootView.findViewById(R.id.btnEnvironment);
 
-//        btnItemSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_container, new SearchFragment())
-//                        .commit();
-//            }
-//        });
-
         btnEnvironment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

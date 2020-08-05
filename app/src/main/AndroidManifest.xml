@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoggedList"></activity>
-        <activity android:name=".SelectedItem" />
         <activity android:name=".Environment" />
         <activity android:name=".Options">
             <intent-filter>

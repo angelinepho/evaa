@@ -18,6 +18,7 @@ import android.widget.SearchView;
 import com.futuremind.recyclerviewfastscroll.FastScroller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchFragment extends Fragment {
 
@@ -39,7 +40,8 @@ public class SearchFragment extends Fragment {
         RecyclerView recycler_view = rootView.findViewById(R.id.recycler_view);
         fastScroller = rootView.findViewById(R.id.fastscroll);
 
-        adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, getActivity());
+        List fragments = getActivity().getSupportFragmentManager().getFragments();
+        adapter = new RecyclerViewAdapter(mNames, mImageUrls, mAlternative, mDisposal, (Fragment) fragments.get(fragments.size() - 1));
         recycler_view.setAdapter(adapter);
         recycler_view.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         fastScroller.setRecyclerView(recycler_view);

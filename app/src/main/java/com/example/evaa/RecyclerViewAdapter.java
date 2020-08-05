@@ -1,7 +1,8 @@
 package com.example.evaa;
 
+import android.content.ClipData;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
@@ -34,9 +37,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mDisposal = new ArrayList<>();
     private ArrayList<String> mDisposalFull;
 
-    private Context mContext;
+    private Fragment mFragment;
 
-    public RecyclerViewAdapter(ArrayList<String> imageNames, ArrayList<Integer> images,  ArrayList<String> alternative, ArrayList<String> disposal, Context context) {
+    public RecyclerViewAdapter(ArrayList<String> imageNames, ArrayList<Integer> images,  ArrayList<String> alternative, ArrayList<String> disposal, Fragment currentFragment) {
         this.mImageNames = imageNames;
         mImageNamesFull = new ArrayList<>(imageNames);  // copy of imageNames
 
@@ -49,7 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.mDisposal = disposal;
         mDisposalFull = new ArrayList<>(disposal);
 
-        this.mContext = context;
+        this.mFragment = currentFragment;
     }
 
     @NonNull
@@ -70,12 +73,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(mContext, SelectedItem.class);
-                intent.putExtra("image_url", mImages.get(position));
-                intent.putExtra("image_name", mImageNames.get(position));
-                intent.putExtra("image_alternative", mAlternative.get(position));
-                intent.putExtra("image_disposal", mDisposal.get(position));
-                mContext.startActivity(intent);
+                Fragment fragment = new ItemFragment();
+                FragmentManager manager = mFragment.getFragmentManager();
+                Bundle bundle = new Bundle();
+                bundle.putInt("image_url", mImages.get(position));
+                bundle.putString("image_name", mImageNames.get(position));
+                bundle.putString("image_alternative", mAlternative.get(position));
+                bundle.putString("image_disposal", mDisposal.get(position));
+                fragment.setArguments(bundle);
+                manager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
             }
         });
     }

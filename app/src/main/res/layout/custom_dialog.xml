@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/fact"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Fun Fact this is."
+        android:padding="5dp"
+        android:text="Fun Fact\nNot all types of glass bottles and jars are recyclable.The acceptance of glass in recycling programs varies by jurisdiction."
         android:textSize="18sp" />
 
 </RelativeLayout>
