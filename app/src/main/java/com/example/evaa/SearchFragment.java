@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;

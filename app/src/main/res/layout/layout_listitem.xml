@@ -35,5 +35,5 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
-        android:text="@string/textview" />
+        android:text="@string/itemSearch" />
 </RelativeLayout>
