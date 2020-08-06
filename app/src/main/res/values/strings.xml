@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">evaa</string>
+    <string name="app_name">EcoLog</string>
     <string name="welcome">"Welcome"</string>
     <string name="earth">"Earth"</string>
     <string name="fact">"Fun Fact"</string>
@@ -18,5 +18,4 @@
     <string name="search">Search</string>
     <string name="swipe">swipe up</string>
     <string name="log">LOG</string>
-    <string name="track">Track</string>
 </resources>

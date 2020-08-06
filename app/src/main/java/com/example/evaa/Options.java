@@ -12,12 +12,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Options extends AppCompatActivity {
 
+    BottomNavigationView bottomNav;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         if (savedInstanceState == null) {
@@ -38,17 +40,23 @@ public class Options extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.nav_home:
                     selectedFragment = new HomeFragment();
-                    break;
+                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
+                            .replace(R.id.fragment_container, selectedFragment).commit();
+                    return true;
                 case R.id.nav_search:
                     selectedFragment = new SearchFragment();
-                    break;
+                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                            .replace(R.id.fragment_container, selectedFragment).commit();
+                    return true;
             }
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-
-            return true;
+            return false;
         }
     };
+
+    @Override
+    public void onBackPressed() {
+    }
 
     public void openDialog() {
         FunFactDialog dialog = new FunFactDialog();

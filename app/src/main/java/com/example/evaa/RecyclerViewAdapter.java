@@ -1,7 +1,5 @@
 package com.example.evaa;
 
-import android.content.ClipData;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,7 +79,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 bundle.putString("image_alternative", mAlternative.get(position));
                 bundle.putString("image_disposal", mDisposal.get(position));
                 fragment.setArguments(bundle);
-                manager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                manager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                        .replace(R.id.fragment_container, fragment).commit();
             }
         });
     }
