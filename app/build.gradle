@@ -40,6 +40,8 @@ dependencies {
     // fast scroll
     implementation 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
 
+    // splash screen
+    implementation 'gr.pantrif:easy-android-splash-screen:0.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -1,12 +1,18 @@
 package com.example.evaa;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -15,7 +21,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Environment extends AppCompatActivity {
+import es.dmoral.toasty.Toasty;
+
+public class EnvironmentFragment extends Fragment {
 
     private ProgressBar progressBarAnim;
     private ObjectAnimator progressAnimator;
@@ -25,33 +33,37 @@ public class Environment extends AppCompatActivity {
     private ArrayList<List<Integer>> backgrounds;
     private ImageView ivCongrats;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_environment_page);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_environment, container, false);
 
-        initializeProgressBar();
-        btnLogger = findViewById(R.id.btnLogger);
-        background = findViewById(R.id.background);
-        ivCongrats = findViewById(R.id.ivCongrats);
+        initializeProgressBar(rootView);
+        btnLogger = rootView.findViewById(R.id.btnLogger);
+        background = rootView.findViewById(R.id.background);
+        ivCongrats = rootView.findViewById(R.id.ivCongrats);
 
-        final DatabaseHelper databaseHelper = new DatabaseHelper(Environment.this);
+        final DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
         numLogged = databaseHelper.getData().size();
 
         progressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator anim) {
                 super.onAnimationEnd(anim);
-                Toast.makeText(getBaseContext(), "Completed", Toast.LENGTH_SHORT).show();
+                Toasty.success(getActivity(), "Completed", Toast.LENGTH_SHORT, true).show();
                 progressBarAnim.setVisibility(View.GONE);
             }
         });
         btnLogger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Environment.this,
-                        LoggedList.class);
-                startActivity(intent);
+                List fragments = getActivity().getSupportFragmentManager().getFragments();
+                Fragment mFragment = (Fragment) fragments.get(fragments.size() - 1);
+
+                Fragment fragment = new LoggedListFragment();
+                FragmentManager manager = mFragment.getFragmentManager();
+                manager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                        .replace(R.id.fragment_container, fragment).commit();
 
             }
         });
@@ -59,10 +71,12 @@ public class Environment extends AppCompatActivity {
         constructBackground();
         setBackground();
         setProgressBar();
+
+        return rootView;
     }
 
-    public void initializeProgressBar() {
-        progressBarAnim = findViewById(R.id.progressBar);
+    public void initializeProgressBar(View rootView) {
+        progressBarAnim = rootView.findViewById(R.id.progressBar);
         progressAnimator = ObjectAnimator.ofInt(progressBarAnim, "progress", 0, 100);
     }
 

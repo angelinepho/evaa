@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Options extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNav;
 
@@ -45,6 +45,11 @@ public class Options extends AppCompatActivity {
                     return true;
                 case R.id.nav_search:
                     selectedFragment = new SearchFragment();
+                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                            .replace(R.id.fragment_container, selectedFragment).commit();
+                    return true;
+                case R.id.nav_environment:
+                    selectedFragment = new EnvironmentFragment();
                     getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                             .replace(R.id.fragment_container, selectedFragment).commit();
                     return true;

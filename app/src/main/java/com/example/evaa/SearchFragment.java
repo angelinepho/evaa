@@ -2,6 +2,7 @@ package com.example.evaa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +35,8 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().show();
         setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         initImageBitmaps();
@@ -834,7 +837,7 @@ public class SearchFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         MenuItem item = menu.findItem(R.id.action_search);
-        SearchView searchView = new SearchView(((Options) getActivity()).getSupportActionBar().getThemedContext());
+        SearchView searchView = new SearchView(((MainActivity) getActivity()).getSupportActionBar().getThemedContext());
         searchView.setQueryHint("Item Search");
 
         item.setActionView(searchView);
