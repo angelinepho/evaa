@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fontFamily="@font/oswald"
-    android:background="@drawable/park_1"
     android:orientation="vertical"
     tools:context=".Environment">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:scaleType="fitXY"-->
-<!--        android:src="@drawable/park_1" />-->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_light_background"
+        android:scaleType="fitXY" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -25,18 +24,26 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
-        android:progress="25"
+        android:progress="0"
         android:progressDrawable="@drawable/custom_progressbar" />
 
     <ImageButton
         android:id="@+id/btnLogger"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="right"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="-80dp"
+        android:layout_below="@id/progressBar"
+        android:layout_toRightOf="@id/progressBar"
         android:background="@android:color/transparent"
         android:scaleType="fitEnd"
         android:src="@drawable/ic_three_bars" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/ivCongrats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:srcCompat="@drawable/congrats" />
+
+</RelativeLayout>

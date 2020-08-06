@@ -14,7 +14,7 @@ import java.util.List;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class FunFactDialog extends AppCompatDialogFragment {
-    TextView fact;
+    private TextView fact;
     private Random randomized;
     private List<String> factList = new ArrayList<String>(){
         {

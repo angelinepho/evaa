@@ -35,7 +35,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addData(String item) {
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_ITEM_NAME, item);
@@ -72,6 +71,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-
+    public void deleteAll() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("delete from "+ TABLE_NAME);
+        db.close();
+    }
 
 }
