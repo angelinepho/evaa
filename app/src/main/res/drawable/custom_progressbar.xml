@@ -19,7 +19,7 @@
                     android:left="2dp"
                     android:right="2dp">
                     <shape>
-                        <solid android:color="#61d199"/>
+                        <solid android:color="@color/colorProgressBar"/>
                         <corners android:radius="8dp"/>
                     </shape>
                 </item>

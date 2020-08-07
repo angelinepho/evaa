@@ -26,7 +26,6 @@ import es.dmoral.toasty.Toasty;
 public class LoggedListFragment extends Fragment {
 
     ImageButton btnExit;
-
     DatabaseHelper myDB;
     ListView listView;
     ArrayList<Item> itemList;
@@ -49,10 +48,10 @@ public class LoggedListFragment extends Fragment {
         {
             Toasty.normal(getActivity(), "Log Empty").show();
         } else {
-            int i=0;
+            int i = 0;
             while (data.moveToNext()) {
-                item = new Item(data.getString(0), data.getString(1));
-                itemList.add(i,item);
+                item = new Item(data.getString(1), data.getString(2));
+                itemList.add(i, item);
                 i++;
             }
             TwoColumn_ListAdapter adapter = new TwoColumn_ListAdapter(getActivity(), R.layout.list_adapter_view, itemList);

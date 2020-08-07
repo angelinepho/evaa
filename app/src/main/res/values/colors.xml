@@ -6,4 +6,5 @@
     <color name="colorAccent">#B3D899</color>
     <color name="colorText">#40494F</color>
     <color name="colorDivider">#FFFEF2</color>
+    <color name="colorProgressBar">#61d199</color>
 </resources>
