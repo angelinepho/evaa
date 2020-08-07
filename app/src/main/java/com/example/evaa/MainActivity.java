@@ -1,71 +1,51 @@
 package com.example.evaa;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.os.PersistableBundle;
+import android.view.View;
+import android.widget.Button;
 
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNav;
+    Button btnItemSearch, btnEnvironment, btnHelp, btnSettings;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options);
+        setContentView(R.layout.activity_main);
 
-        bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        btnItemSearch = findViewById(R.id.btnItemSearch);
+        btnEnvironment = findViewById(R.id.btnEnvironment);
+        btnHelp = findViewById(R.id.btnHelp);
+        btnSettings = findViewById(R.id.btnSettings);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new HomeFragment())
-                    .commit();
-        }
-
-        openDialog();
-    }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
-
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    selectedFragment = new HomeFragment();
-                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
-                            .replace(R.id.fragment_container, selectedFragment).commit();
-                    return true;
-                case R.id.nav_search:
-                    selectedFragment = new SearchFragment();
-                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                            .replace(R.id.fragment_container, selectedFragment).commit();
-                    return true;
-                case R.id.nav_environment:
-                    selectedFragment = new EnvironmentFragment();
-                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                            .replace(R.id.fragment_container, selectedFragment).commit();
-                    return true;
+        btnItemSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NavActivity.class);
+                intent.putExtra("instruction", "search");
+                startActivity(intent);
             }
+        });
 
-            return false;
-        }
-    };
+        btnEnvironment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NavActivity.class);
+                intent.putExtra("instruction", "environment");
+                startActivity(intent);
+            }
+        });
+
+    }
 
     @Override
     public void onBackPressed() {
     }
-
-    public void openDialog() {
-        FunFactDialog dialog = new FunFactDialog();
-        dialog.show(getSupportFragmentManager(), "This is openDialog()");
-    }
-
 }
+
+

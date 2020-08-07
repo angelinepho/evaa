@@ -9,7 +9,7 @@
     android:layout_marginTop="7dp"
     android:layout_marginRight="7dp"
     android:layout_marginBottom="7dp"
-    android:background="@drawable/custom_itembubble_white"
+    android:background="@color/colorPrimaryLight"
     android:orientation="vertical"
     android:elevation="5dp">
 
@@ -35,5 +35,5 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
-        android:text="@string/itemSearch" />
+        android:text="Item Name" />
 </RelativeLayout>

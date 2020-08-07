@@ -2,7 +2,6 @@ package com.example.evaa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.VoiceInteractor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;

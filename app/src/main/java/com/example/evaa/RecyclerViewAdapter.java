@@ -79,7 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 bundle.putString("image_alternative", mAlternative.get(position));
                 bundle.putString("image_disposal", mDisposal.get(position));
                 fragment.setArguments(bundle);
-                manager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                manager.beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
                         .replace(R.id.fragment_container, fragment).commit();
             }
         });

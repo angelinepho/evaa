@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -837,7 +836,7 @@ public class SearchFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         MenuItem item = menu.findItem(R.id.action_search);
-        SearchView searchView = new SearchView(((MainActivity) getActivity()).getSupportActionBar().getThemedContext());
+        SearchView searchView = new SearchView(((NavActivity) getActivity()).getSupportActionBar().getThemedContext());
         searchView.setQueryHint("Item Search");
 
         item.setActionView(searchView);
