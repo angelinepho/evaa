@@ -14,32 +14,36 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String TABLE_NAME = "ITEMS_TABLE";
-    private static final String COLUMN_ITEM_NAME = "ITEM_NAME";
+    public static final String DATABASE_NAME = "items.db";
+    public static final String TABLE_NAME = "ITEMS_TABLE";
+    public static final String COLUMN_ITEM_NAME = "ITEMNAME";
+    public static final String COLUMN_ITEM_DATE = "ITEMDATE";
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "item_table.db", null, 1);
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_ITEM_NAME + " TEXT)";
-        sqLiteDatabase.execSQL(createTable);
+    public void onCreate(SQLiteDatabase db) {
+        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " ITEMNAME TEXT, ITEMDATE TEXT)";
+        db.execSQL(createTable);
     }
 
     // Method for if the database version number changes
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(sqLiteDatabase);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
     }
 
-    public boolean addData(String item) {
+    public boolean addData(String item, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_ITEM_NAME, item);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_ITEM_NAME, item);
+        contentValues.put(COLUMN_ITEM_DATE, date);
 
-        long result = db.insert(TABLE_NAME, null, cv);
+        long result = db.insert(TABLE_NAME, null, contentValues);
 
         if (result == -1) {
             return false;
@@ -48,33 +52,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<String> getData(){
-        List<String> returnList = new ArrayList<>();
-
-        String query = "SELECT * FROM " + TABLE_NAME;
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.rawQuery(query, null);
-        if (cursor.moveToFirst()) {
-            // Loop through the cursor
-            do {
-                String itemName = cursor.getString(1);
-                returnList.add(itemName);
-            } while (cursor.moveToNext());
-        } else {
-            // Do not add anything to the list
-        }
-
-        // Close both the cursor and the db
-        cursor.close();
-        db.close();
-        return returnList;
+    public Cursor getListContents() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return data;
     }
 
-    public void deleteAll() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL("delete from "+ TABLE_NAME);
-        db.close();
-    }
+//    public void deleteAll() {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        db.execSQL("delete from "+ TABLE_NAME);
+//        db.close();
+//    }
 
 }

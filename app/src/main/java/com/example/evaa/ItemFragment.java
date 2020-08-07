@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -38,19 +41,16 @@ public class ItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String name = image_name.getText().toString();
-                if (name.length() != 0) {
-                    AddData(name);
-                } else {
-                    Toasty.warning(getActivity(), "No Item to Log", Toast.LENGTH_SHORT, true).show();
-                }
+                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                AddData(name, date);
             }
         });
 
         return rootView;
     }
 
-    public void AddData(String newEntry) {
-        boolean insertData = mDatabaseHelper.addData(newEntry);
+    public void AddData(String name, String date) {
+        boolean insertData = mDatabaseHelper.addData(name, date);
 
         if (insertData) {
             Toasty.success(getActivity(), "Log Success", Toast.LENGTH_SHORT, true).show();

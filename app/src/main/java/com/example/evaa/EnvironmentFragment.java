@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,11 @@ public class EnvironmentFragment extends Fragment {
         ivCongrats = rootView.findViewById(R.id.ivCongrats);
 
         final DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
-        numLogged = databaseHelper.getData().size();
+        numLogged = 0;
+        Cursor data = databaseHelper.getListContents();
+        while (data.moveToNext()) {
+            numLogged++;
+        }
 
         progressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
