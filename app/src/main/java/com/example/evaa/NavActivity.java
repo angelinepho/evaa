@@ -7,8 +7,11 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 public class NavActivity extends AppCompatActivity {
 
@@ -29,6 +32,10 @@ public class NavActivity extends AppCompatActivity {
             navListener.onNavigationItemSelected(bottomNav.getMenu().findItem(R.id.nav_search));
         } else if (instruction.equals("environment")) {
             navListener.onNavigationItemSelected(bottomNav.getMenu().findItem(R.id.nav_environment));
+        } else if (instruction.equals("help")){
+            Fragment fragment = new HelpFragment();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
+                    .replace(R.id.fragment_container, fragment).commit();
         }
 
         openDialog();

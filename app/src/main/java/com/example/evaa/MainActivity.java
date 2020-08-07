@@ -41,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NavActivity.class);
+                intent.putExtra("instruction", "help");
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

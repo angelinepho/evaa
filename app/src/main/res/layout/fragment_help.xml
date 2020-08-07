@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDivider"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvItemSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Item Search"
+                android:textColor="@color/colorText"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvItemSearchDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_textbubble_white_clear"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Search or scroll to find an item. Eco-friendly alternatives and proper disposal methods will be listed. Logging an item will contribute to your environment progress."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvEnvironment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Environment"
+                android:textColor="@color/colorText"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvEnvironmentDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_textbubble_white_clear"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="When you properly dispose of and log an item through Item Search, your environment scene will be come cleaner. Track your progess using the progess bar and log. Clean the entire screen to unlock a new environment."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="70dp"
+                android:background="@drawable/custom_textbubble_white_clear"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Can't find an item? Contact us through this form to request an item."
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:height="18dp"
+                android:background="@drawable/custom_button_settings"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Form"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
