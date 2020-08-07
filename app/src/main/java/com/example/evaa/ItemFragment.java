@@ -20,7 +20,7 @@ public class ItemFragment extends Fragment {
 
     DatabaseHelper mDatabaseHelper;
     private Button btnAdd;
-    private TextView image_description;
+    private TextView image_name;
 
     @Nullable
     @Override
@@ -29,7 +29,7 @@ public class ItemFragment extends Fragment {
 
         btnAdd = rootView.findViewById(R.id.btnAdd);
         mDatabaseHelper = new DatabaseHelper(getActivity());
-        image_description = rootView.findViewById(R.id.image_description);
+        image_name = rootView.findViewById(R.id.image_name);
 
         Bundle bundle = getArguments();
         getIncomingBundle(rootView, bundle);
@@ -37,7 +37,7 @@ public class ItemFragment extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = image_description.getText().toString();
+                String name = image_name.getText().toString();
                 if (name.length() != 0) {
                     AddData(name);
                 } else {
@@ -69,7 +69,7 @@ public class ItemFragment extends Fragment {
     }
 
     private void setImage(View rootView, Integer imageUrl, String imageName, String imageAlternative, String imageDisposal) {
-        TextView name = rootView.findViewById(R.id.image_description);
+        TextView name = rootView.findViewById(R.id.image_name);
         name.setText(imageName);
 
         ImageView image = rootView.findViewById(R.id.image);
