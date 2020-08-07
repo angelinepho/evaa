@@ -50,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NavActivity.class);
+                intent.putExtra("instruction", "settings");
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

@@ -36,6 +36,10 @@ public class NavActivity extends AppCompatActivity {
             Fragment fragment = new HelpFragment();
             getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
                     .replace(R.id.fragment_container, fragment).commit();
+        } else if (instruction.equals("settings")){
+            Fragment fragment = new SettingsFragment();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                    .replace(R.id.fragment_container, fragment).commit();
         }
 
         openDialog();
