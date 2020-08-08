@@ -3,7 +3,7 @@
 
     <item android:id="@+id/background">
         <shape>
-            <solid android:color="#FFFFFF"/>
+            <solid android:color="@color/colorPrimaryLight"/>
             <size
                 android:width="15dp"
                 android:height="15dp"/>
@@ -19,8 +19,8 @@
                     android:left="2dp"
                     android:right="2dp">
                     <shape>
-                        <solid android:color="@color/colorProgressBar"/>
-                        <corners android:radius="8dp"/>
+                        <solid android:color="@color/colorAccent"/>
+                        <corners android:radius="100dp"/>
                     </shape>
                 </item>
             </layer-list>

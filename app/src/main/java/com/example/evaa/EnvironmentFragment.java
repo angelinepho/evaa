@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -27,7 +27,7 @@ public class EnvironmentFragment extends Fragment {
 
     private ProgressBar progressBarAnim;
     private ObjectAnimator progressAnimator;
-    private ImageButton btnLogger;
+    private Button btnLogger;
     private ImageView background;
     private Integer numLogged;
     private ArrayList<List<Integer>> backgrounds;

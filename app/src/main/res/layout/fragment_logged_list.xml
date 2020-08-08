@@ -4,30 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
-    android:layout_marginRight="30dp"
-    android:layout_marginBottom="10dp"
-    android:gravity="center_horizontal|top"
+    android:padding="25dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/colorDivider"
     tools:context=".LoggedListFragment">
 
-    <ImageButton
-        android:id="@+id/btnExit"
+    <TextView
+        android:id="@+id/tvTracker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/custom_button"
-        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        android:layout_margin="15dp"
+        android:background="@drawable/custom_button_light"
+        android:gravity="center"
+        android:minHeight="30dp"
+        android:paddingStart="15dp"
+        android:paddingRight="15dp"
+        android:text="Here is your overall activity:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
 
     <ListView
         android:id="@+id/listLogged"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/custom_textbubble_white_clear" />
 
 </LinearLayout>

@@ -14,29 +14,48 @@
         android:background="@color/cardview_light_background"
         android:scaleType="fitXY" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:progress="0"
-        android:progressDrawable="@drawable/custom_progressbar" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:padding="10dp">
 
-    <ImageButton
-        android:id="@+id/btnLogger"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="-80dp"
-        android:layout_below="@id/progressBar"
-        android:layout_toRightOf="@id/progressBar"
-        android:background="@android:color/transparent"
-        android:scaleType="fitEnd"
-        android:src="@drawable/ic_three_bars" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="95"
+            android:minHeight="30dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/custom_progressbar" />
+
+        <Button
+            android:id="@+id/btnLogger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button_light"
+            android:minHeight="30dp"
+            android:text="Tracker"
+            android:textColor="@color/colorText"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button_light"
+            android:minWidth="30dip"
+            android:minHeight="30dip"
+            android:text="\?"
+            android:textColor="@color/colorText"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/ivCongrats"

@@ -25,7 +25,6 @@ import es.dmoral.toasty.Toasty;
 
 public class LoggedListFragment extends Fragment {
 
-    ImageButton btnExit;
     DatabaseHelper myDB;
     ListView listView;
     ArrayList<Item> itemList;
@@ -36,7 +35,6 @@ public class LoggedListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_logged_list, container, false);
 
-        btnExit = rootView.findViewById(R.id.btnExit);
         listView = (ListView) rootView.findViewById(R.id.listLogged);
 
         myDB = new DatabaseHelper(getActivity());
@@ -58,20 +56,6 @@ public class LoggedListFragment extends Fragment {
             listView = (ListView) rootView.findViewById(R.id.listLogged);
             listView.setAdapter(adapter);
         }
-
-
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                List fragments = getActivity().getSupportFragmentManager().getFragments();
-                Fragment fragment = new EnvironmentFragment();
-                Fragment currentFragment = (Fragment) fragments.get(fragments.size() - 1);
-                FragmentManager manager = currentFragment.getFragmentManager();
-
-                manager.beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
-                        .replace(R.id.fragment_container, fragment).commit();
-            }
-        });
 
         return rootView;
     }
