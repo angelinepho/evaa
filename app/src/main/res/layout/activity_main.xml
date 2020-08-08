@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorDivider"
+    android:background="@drawable/ic_backgroundbackground"
     android:orientation="vertical"
     tools:context=".MainActivity">
 

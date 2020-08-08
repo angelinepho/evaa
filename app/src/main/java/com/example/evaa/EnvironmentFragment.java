@@ -10,6 +10,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import es.dmoral.toasty.Toasty;
 
 public class EnvironmentFragment extends Fragment {
@@ -29,9 +29,11 @@ public class EnvironmentFragment extends Fragment {
     private ObjectAnimator progressAnimator;
     private Button btnLogger;
     private ImageView background;
-    private Integer numLogged;
+    private Integer numLogged = 0;
     private ArrayList<List<Integer>> backgrounds;
     private ImageView ivCongrats;
+    private Integer currentBackground;
+    private Integer percentProgress = 0;
 
     @Nullable
     @Override
@@ -44,8 +46,8 @@ public class EnvironmentFragment extends Fragment {
         ivCongrats = rootView.findViewById(R.id.ivCongrats);
 
         final DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
-        numLogged = 0;
         Cursor data = databaseHelper.getListContents();
+
         while (data.moveToNext()) {
             numLogged++;
         }
@@ -68,7 +70,6 @@ public class EnvironmentFragment extends Fragment {
                 FragmentManager manager = mFragment.getFragmentManager();
                 manager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                         .replace(R.id.fragment_container, fragment).commit();
-
             }
         });
 
@@ -131,18 +132,18 @@ public class EnvironmentFragment extends Fragment {
     }
 
     public void setBackground() {
-        Integer currentBackground = backgrounds.get(numLogged%19).get(0);
+        currentBackground = backgrounds.get(numLogged%19).get(0);
         background.setImageResource(currentBackground);
     }
 
     public void setProgressBar() {
-        Integer percentProgress = backgrounds.get(numLogged%19).get(1);
+        percentProgress = backgrounds.get(numLogged%19).get(1);
+        progressBarAnim.setProgress(percentProgress);
         if (percentProgress == 100) {
             ivCongrats.setVisibility(View.VISIBLE);
         } else {
             ivCongrats.setVisibility(View.GONE);
         }
-        progressBarAnim.setProgress(Math.round(percentProgress));
     }
 
 }

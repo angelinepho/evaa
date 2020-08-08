@@ -40,6 +40,15 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        btnClearData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseHelper db = new DatabaseHelper(getActivity());
+                db.deleteAll();
+//                EnvironmentFragment.resetPercentProgress();
+            }
+        });
+
         return rootView;
     }
 }
