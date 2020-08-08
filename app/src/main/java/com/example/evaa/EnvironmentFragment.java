@@ -4,10 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +35,7 @@ public class EnvironmentFragment extends Fragment {
     private Integer currentBackground;
     private Integer percentProgress = 0;
 
+    @SuppressLint("LongLogTag")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class EnvironmentFragment extends Fragment {
         constructBackground();
         setBackground();
         setProgressBar();
+        Log.i("Current Percentage Progress", String.valueOf(percentProgress));
 
         return rootView;
     }
