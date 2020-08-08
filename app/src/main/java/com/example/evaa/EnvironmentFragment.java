@@ -39,7 +39,7 @@ public class EnvironmentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_environment, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_environment, container, false);
 
         initializeProgressBar(rootView);
         btnLogger = rootView.findViewById(R.id.btnLogger);
@@ -57,8 +57,8 @@ public class EnvironmentFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animator anim) {
                 super.onAnimationEnd(anim);
-                Toasty.success(getActivity(), "Completed", Toast.LENGTH_SHORT, true).show();
-                progressBarAnim.setVisibility(View.GONE);
+                Toasty.success(getActivity(), "Good Karma", Toast.LENGTH_SHORT, true).show();
+                initializeProgressBar(rootView);
             }
         });
         btnLogger.setOnClickListener(new View.OnClickListener() {
