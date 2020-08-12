@@ -75,7 +75,7 @@ public class EnvironmentFragment extends Fragment {
         });
 
         constructBackground();
-        setBackground();
+        setBackground(rootView);
         setProgressBar();
         Log.i("Current Percentage Progress", String.valueOf(percentProgress));
 
@@ -88,25 +88,25 @@ public class EnvironmentFragment extends Fragment {
     }
 
     public void constructBackground() {
-        final List<Integer> e1 = Arrays.asList(R.drawable.park_1, 0);
-        final List<Integer> e2 = Arrays.asList(R.drawable.park_2, 20);
-        final List<Integer> e3 = Arrays.asList(R.drawable.park_3, 40);
-        final List<Integer> e4 = Arrays.asList(R.drawable.park_4, 60);
-        final List<Integer> e5 = Arrays.asList(R.drawable.park_5, 80);
-        final List<Integer> e6 = Arrays.asList(R.drawable.park_6, 100);
-        final List<Integer> e7 = Arrays.asList(R.drawable.desert_1, 0);
-        final List<Integer> e8 = Arrays.asList(R.drawable.desert_2, 20);
-        final List<Integer> e9 = Arrays.asList(R.drawable.desert_3, 40);
-        final List<Integer> e10 = Arrays.asList(R.drawable.desert_4, 60);
-        final List<Integer> e11 = Arrays.asList(R.drawable.desert_5, 80);
-        final List<Integer> e12 = Arrays.asList(R.drawable.desert_6, 100);
-        final List<Integer> e13 = Arrays.asList(R.drawable.beach_1, 0);
-        final List<Integer> e14 = Arrays.asList(R.drawable.beach_2, 16);
-        final List<Integer> e15 = Arrays.asList(R.drawable.beach_3, 33);
-        final List<Integer> e16 = Arrays.asList(R.drawable.beach_4, 50);
-        final List<Integer> e17 = Arrays.asList(R.drawable.beach_5, 66);
-        final List<Integer> e18 = Arrays.asList(R.drawable.beach_6, 83);
-        final List<Integer> e19 = Arrays.asList(R.drawable.beach_7, 100);
+        final List<Integer> e1 = Arrays.asList(R.drawable.ic_park_1artboard_1, 0);
+        final List<Integer> e2 = Arrays.asList(R.drawable.ic_park_2artboard_1, 25);
+        final List<Integer> e3 = Arrays.asList(R.drawable.ic_park_3artboard_1, 50);
+        final List<Integer> e4 = Arrays.asList(R.drawable.ic_park_4artboard_1, 75);
+        final List<Integer> e5 = Arrays.asList(R.drawable.ic_park_5artboard_1, 100);
+        final List<Integer> e6 = Arrays.asList(R.drawable.ic_desert_1artboard_1, 0);
+        final List<Integer> e7 = Arrays.asList(R.drawable.ic_desert_2artboard_1, 20);
+        final List<Integer> e8 = Arrays.asList(R.drawable.ic_desert_3artboard_1, 40);
+        final List<Integer> e9 = Arrays.asList(R.drawable.ic_desert_4artboard_1, 60);
+        final List<Integer> e10 = Arrays.asList(R.drawable.ic_desert_5artboard_1, 80);
+        final List<Integer> e11 = Arrays.asList(R.drawable.ic_desert_6artboard_1, 100);
+//        final List<Integer> e12 = Arrays.asList(R.drawable.desert_6, 100);
+//        final List<Integer> e13 = Arrays.asList(R.drawable.beach_1, 0);
+//        final List<Integer> e14 = Arrays.asList(R.drawable.beach_2, 16);
+//        final List<Integer> e15 = Arrays.asList(R.drawable.beach_3, 33);
+//        final List<Integer> e16 = Arrays.asList(R.drawable.beach_4, 50);
+//        final List<Integer> e17 = Arrays.asList(R.drawable.beach_5, 66);
+//        final List<Integer> e18 = Arrays.asList(R.drawable.beach_6, 83);
+//        final List<Integer> e19 = Arrays.asList(R.drawable.beach_7, 100);
 
         backgrounds = new ArrayList<List<Integer> >() {
             {
@@ -121,25 +121,25 @@ public class EnvironmentFragment extends Fragment {
                 add(e9);
                 add(e10);
                 add(e11);
-                add(e12);
-                add(e13);
-                add(e14);
-                add(e15);
-                add(e16);
-                add(e17);
-                add(e18);
-                add(e19);
+//                add(e12);
+//                add(e13);
+//                add(e14);
+//                add(e15);
+//                add(e16);
+//                add(e17);
+//                add(e18);
+//                add(e19);
             }
         };
     }
 
-    public void setBackground() {
-        currentBackground = backgrounds.get(numLogged%19).get(0);
-        background.setImageResource(currentBackground);
+    public void setBackground(View rv) {
+        currentBackground = backgrounds.get(numLogged%backgrounds.size()).get(0);
+        rv.setBackgroundResource(currentBackground);
     }
 
     public void setProgressBar() {
-        percentProgress = backgrounds.get(numLogged%19).get(1);
+        percentProgress = backgrounds.get(numLogged%backgrounds.size()).get(1);
         progressBarAnim.setProgress(percentProgress);
         if (percentProgress == 100) {
             ivCongrats.setVisibility(View.VISIBLE);

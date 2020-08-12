@@ -4,6 +4,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
+
     defaultConfig {
         applicationId "com.example.evaa"
         minSdkVersion 21
