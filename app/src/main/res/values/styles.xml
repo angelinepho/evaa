@@ -12,6 +12,10 @@
 
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/custom_textbubble</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/cgothic</item>
+        <item name="android:textColor">@color/colorText</item>
     </style>
 
     <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">

@@ -4,27 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_backgroundbackground"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/ic_ash_from_manufactured_logs_and_pellets" />
-
     <TextView
-        android:id="@+id/tvItemSearchDescription"
+        android:id="@+id/tvTracker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/custom_textbubble_white_clear"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/custom_button_light"
+        android:elevation="5dp"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="This app was created by Ellise Limjoco, Ashlyn Riambon, Angeline Pho, and Vivian Chu with the help of their technical mentor Ravin Jain and SEEDS.\n\nIcons are made by Freepik:\nhttps://www.flaticon.com/authors/freepik"
+        android:minHeight="30dp"
+        android:paddingStart="15dp"
+        android:paddingRight="15dp"
+        android:text="Credits Page"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/ic_ash_from_manufactured_logs_and_pellets" />
+
+        <TextView
+            android:id="@+id/tvItemSearchDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/custom_textbubble_white_clear"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="This app was created by Ellise Limjoco, Ashlyn Riambon, Angeline Pho, and Vivian Chu with the help of their technical mentor Ravin Jain and SEEDS.\n\nIcons are made by Freepik:\nhttps://www.flaticon.com/authors/freepik"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>

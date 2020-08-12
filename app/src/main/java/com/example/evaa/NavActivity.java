@@ -56,6 +56,7 @@ public class NavActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     Intent intent = new Intent(NavActivity.this, MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_left);
                     return true;
                 case R.id.nav_search:
                     selectedFragment = new SearchFragment();

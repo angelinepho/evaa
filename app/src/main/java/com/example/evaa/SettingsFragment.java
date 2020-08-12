@@ -15,15 +15,15 @@ import java.util.List;
 
 public class SettingsFragment extends Fragment {
 
-    Button btnCredits, btnColorFilters, btnClearData;
+    Button btnTutorial, btnCredits, btnClearData;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        btnTutorial = rootView.findViewById(R.id.btnTutorial);
         btnCredits = rootView.findViewById(R.id.btnCredits);
-        btnColorFilters = rootView.findViewById(R.id.btnColorFilters);
         btnClearData = rootView.findViewById(R.id.btnClearData);
 
         btnCredits.setOnClickListener(new View.OnClickListener() {

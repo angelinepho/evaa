@@ -7,8 +7,8 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,24 +26,26 @@ public class SplashScreenActivity extends AppCompatActivity {
         {
             add("Not all types of glass bottles and jars are recyclable. The acceptance of glass in recycling programs varies by jurisdiction.\n-Waste Management");
             add("A cotton shopping bag must be used at least 131 times to have less impact on the environment than single-use bags.\n-MarketWatch");
-            add("Many kinds of toothpaste contain small plastic beads which may lodge in the gums, are likely harmful to the environment, and are included in toothpaste for decorative purposes only.\n-DentistryIQ");
-            add("Recycling arrows on a container does not mean it is definitely recyclable. Many plastics cannot be recycled into new products. Check with your local program guidelines.\n-Waste Management");
-            add("Chewing gum is made from polymers which are synthetic plastics that do not biodegrade. 80–90% of chewing gum is not disposed of properly and it’s the second most common form of litter after cigarette butts.\n-CustomMade");
+            add("Many kinds of toothpaste contain small plastic beads [that] are likely harmful to the environment.\n-DentistryIQ");
+            add("Recycling arrows on a container does not mean it is definitely recyclable... Check with your local program guidelines.\n-Waste Management");
+            add("Chewing gum is made from polymers which are synthetic plastics that do not biodegrade.\n-CustomMade");
+            add("80–90% of chewing gum is not disposed of properly and it’s the second most common form of litter after cigarette butts.\n-CustomMade");
             add("The average person generates over 4 pounds of trash every day and about 1.5 tons of solid waster per year.\n-DoSomething");
             add("The EPA estimates that 75% of the American waste stream is recyclable, but we only recycle about 30% of it.\n-DoSomething");
-            add("We generate 21.5 million tons of food waster each year. If we composted that food, it would reduce the same amount of greenhouse gas as taking 2 million cars off the road.\n-DoSomething");
-            add("Recycling one aluminum can saves enough energy to listen to a full album on your iPod. Recycling 100 cans could light your bedroom for two whole weeks.\n-DoSomething");
+            add("We generate 21.5 million tons of food waster each year.\n-DoSomething");
+            add("If we compost a years worth of food waste, it would reduce the same amount of greenhouse gas as taking 2 million cars off the road.\n-DoSomething");
+            add("Recycling one aluminum can saves enough energy to listen to a full album on your iPod.\n-DoSomething");
+            add("Recycling 100 cans could light your bedroom for two whole weeks.\n-DoSomething");
             add("Over 87% of Americans have access to curbside or drop-off paper recycling programs.\n-DoSomething");
             add("New York City residents throw out enough garbage each day to fill the entire Empire State Building.\n-Rubicon");
             add("Packaging represents about 65% of household trash.\n-Rubicon");
             add("Only 4% of the world's children live in the US, but Americans buy (and throw away) 40% of the world's toys.\n-Rubicon");
             add("If one-forth of the food currently lost or waster globally could be saved, it would be enough to feed roughly 870 million people.\n-Rubicon");
             add("Annually, more than 14 billion pounds of garbage is dumped into the world's ocean (mainly marine life toxic plastic).\n-Rubicon");
-            add("The Great Pacific Garbage Patch, or Pacific trash vortex, is a collection of marine debris in the North Pacific Ocean. According to some estimates the patch can be as large as twice the size of the US and would take 67 ships one year to clean up less than 1% of the garbage mass.\n-Rubicon");
-            add("Almost half of all seabirds species, 22% of cetaceans, all sea turtles species, and a growing list of fish species have been documented with plastic found in or around their bodies.\n-Rubicon");
+            add("The Great Pacific Garbage Patch is as large as twice the size of the US and would take 67 ships one year to clean up less than 1% of the garbage mass.\n-Rubicon");
+            add("Almost half of all seabirds species, all sea turtles species, and a growing list of fish species have been documented with plastic in/around their bodies.\n-Rubicon");
             add("Every year, over 50 million tons of electronic waste (i.e. cell phones, computers, TVs, etc.) is created.\n-Rubicon");
             add("Annually, Americans throw out old phones containing over $60 million in gold and/or silver.\n-Rubicon");
-            add("Containers don't need to be spotless in order to be recycled; all bottles, cans and containers should be clean, dry and free of most food waste before you place them in your recycling container.\n-Waste Management");
             add("Not all types of glass bottles and jars are recyclable. The acceptance of glass in recycling programs varies by jurisdiction.\n-Waste Management");
         }
     };
@@ -60,7 +62,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         EasySplashScreen config = new EasySplashScreen(SplashScreenActivity.this)
                 .withFullScreen()
                 .withTargetActivity(MainActivity.class)
-                .withSplashTimeOut(5000)
+                .withSplashTimeOut(6000)
                 .withBackgroundResource(R.drawable.ic_backgroundbackground)
                 .withAfterLogoText("Fun Fact")
                 .withFooterText(String.valueOf(fact))
@@ -73,32 +75,31 @@ public class SplashScreenActivity extends AppCompatActivity {
         config.getLogo().setY(-150);
         config.getLogo().setMaxHeight(500);
 
-        config.getAfterLogoTextView().setY(-50);
         config.getAfterLogoTextView().setTextColor(Color.parseColor("#40494F"));
         config.getAfterLogoTextView().setTextSize(24);
-        config.getAfterLogoTextView().setForegroundGravity(View.TEXT_ALIGNMENT_CENTER);
 
         config.getFooterTextView().setY(-200);
         config.getFooterTextView().setTextColor(Color.parseColor("#40494F"));
         config.getFooterTextView().setTextSize(18);
-        config.getFooterTextView().setForegroundGravity(View.TEXT_ALIGNMENT_CENTER);
         config.getFooterTextView().setBackgroundResource(R.drawable.custom_textbubble_white_clear);
-        config.getFooterTextView().setMaxWidth(950);
-        config.getFooterTextView().setPadding(20,20,20,20);
+        config.getFooterTextView().setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        config.getFooterTextView().setMaxWidth(925);
+        config.getFooterTextView().setPadding(25,30,25,30);
 
         View easySplashScreen = config.create();
         setContentView(easySplashScreen);
+        overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_left);
     }
 
     private void myCustomLogoAnimation(ImageView logo){
-        Animation animation=new TranslateAnimation(-500,0,0,0);
-        animation.setDuration(1200);
+        Animation animation = new AlphaAnimation(0, 1);
+        animation.setDuration(1000);
         logo.startAnimation(animation);
     }
 
     private void myCustomTextViewAnimation(TextView tv){
-        Animation animation=new TranslateAnimation(500,0,0,0);
-        animation.setDuration(1200);
+        Animation animation = new AlphaAnimation(0, 1);
+        animation.setDuration(1000);
         tv.startAnimation(animation);
     }
 }

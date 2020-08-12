@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/colorDivider"
+    android:background="@drawable/ic_backgroundbackground"
     tools:context=".NavActivity">
 
     <FrameLayout
