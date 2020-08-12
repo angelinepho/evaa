@@ -53,14 +53,15 @@ public class EnvironmentFragment extends Fragment {
             numLogged++;
         }
 
-        progressAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator anim) {
-                super.onAnimationEnd(anim);
-                Toasty.success(getActivity(), "Good Karma", Toast.LENGTH_SHORT, true).show();
-                initializeProgressBar(rootView);
-            }
-        });
+
+//        progressAnimator.addListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator anim) {
+//                super.onAnimationEnd(anim);
+//                Toasty.success(getActivity(), "Good Karma", Toast.LENGTH_SHORT, true).show();
+//                initializeProgressBar(rootView);
+//            }
+//        });
         btnLogger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +79,7 @@ public class EnvironmentFragment extends Fragment {
         setBackground(rootView);
         setProgressBar();
         Log.i("Current Percentage Progress", String.valueOf(percentProgress));
+        initializeProgressBar(rootView);
 
         return rootView;
     }
