@@ -2,13 +2,16 @@ package com.example.evaa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +31,7 @@ public class EnvironmentFragment extends Fragment {
 
     private ProgressBar progressBarAnim;
     private ObjectAnimator progressAnimator;
-    private Button btnLogger;
+    private Button btnLogger, btnHelp;
     private ImageView background;
     private Integer numLogged = 0;
     private ArrayList<List<Integer>> backgrounds;
@@ -43,6 +47,7 @@ public class EnvironmentFragment extends Fragment {
 
         initializeProgressBar(rootView);
         btnLogger = rootView.findViewById(R.id.btnLogger);
+        btnHelp = rootView.findViewById(R.id.btnHelp);
         background = rootView.findViewById(R.id.background);
         ivCongrats = rootView.findViewById(R.id.ivCongrats);
 
@@ -72,6 +77,22 @@ public class EnvironmentFragment extends Fragment {
                 FragmentManager manager = mFragment.getFragmentManager();
                 manager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                         .replace(R.id.fragment_container, fragment).commit();
+            }
+        });
+
+        btnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
+                builder.setMessage("Welcome to your environment! When you properly dispose of an item, log the item through Item Search. Click \"Track\" to see your list of items logged. Clean the entire screen to unlock a new environment!");
+                final AlertDialog alert = builder.create();
+                alert.show();
+
+                TextView textView = (TextView) alert.findViewById(android.R.id.message);
+                Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
+                textView.setTypeface(typeFace);
+                textView.setPadding(25,30,25,30);
+                textView.setTextSize(18);
             }
         });
 

@@ -41,8 +41,6 @@ public class NavActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                     .replace(R.id.fragment_container, fragment).commit();
         }
-
-        openDialog();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener
@@ -76,11 +74,6 @@ public class NavActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-    }
-
-    public void openDialog() {
-        FunFactDialog dialog = new FunFactDialog();
-        dialog.show(getSupportFragmentManager(), "This is openDialog()");
     }
 
 }

@@ -2,8 +2,12 @@ package com.example.evaa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +26,7 @@ import es.dmoral.toasty.Toasty;
 public class ItemFragment extends Fragment {
 
     DatabaseHelper mDatabaseHelper;
-    private Button btnAdd;
+    private Button btnAdd, btnHelp;
     private TextView image_name;
 
     @Nullable
@@ -31,6 +35,7 @@ public class ItemFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_item, container, false);
 
         btnAdd = rootView.findViewById(R.id.btnAdd);
+        btnHelp = rootView.findViewById(R.id.btnHelp);
         mDatabaseHelper = new DatabaseHelper(getActivity());
         image_name = rootView.findViewById(R.id.image_name);
 
@@ -40,9 +45,44 @@ public class ItemFragment extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = image_name.getText().toString();
-                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                AddData(name, date);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
+                builder.setMessage(image_name.getText().toString() + " will be added to your environment log. Continue?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                String name = image_name.getText().toString();
+                                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                                AddData(name, date);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        });
+                final AlertDialog alert = builder.create();
+                alert.show();
+
+                TextView textView = (TextView) alert.findViewById(android.R.id.message);
+                Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
+                textView.setTypeface(typeFace);
+                textView.setPadding(25,30,25,30);
+                textView.setTextSize(18);
+            }
+        });
+
+        btnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
+                builder.setMessage("Read below to find eco-friendly alternatives and proper disposal methods. Log an item to clean your environment screen.");
+                final AlertDialog alert = builder.create();
+                alert.show();
+
+                TextView textView = (TextView) alert.findViewById(android.R.id.message);
+                Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
+                textView.setTypeface(typeFace);
+                textView.setPadding(25,30,25,30);
+                textView.setTextSize(18);
             }
         });
 
