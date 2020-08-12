@@ -5,15 +5,12 @@ import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +18,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import es.dmoral.toasty.Toasty;
 
 public class EnvironmentFragment extends Fragment {
 
@@ -58,6 +53,10 @@ public class EnvironmentFragment extends Fragment {
             numLogged++;
         }
 
+        constructBackground();
+        setBackground(rootView);
+        setProgressBar();
+        initializeProgressBar(rootView);
 
 //        progressAnimator.addListener(new AnimatorListenerAdapter() {
 //            @Override
@@ -67,6 +66,7 @@ public class EnvironmentFragment extends Fragment {
 //                initializeProgressBar(rootView);
 //            }
 //        });
+
         btnLogger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,12 +95,6 @@ public class EnvironmentFragment extends Fragment {
                 textView.setTextSize(18);
             }
         });
-
-        constructBackground();
-        setBackground(rootView);
-        setProgressBar();
-        Log.i("Current Percentage Progress", String.valueOf(percentProgress));
-        initializeProgressBar(rootView);
 
         return rootView;
     }
