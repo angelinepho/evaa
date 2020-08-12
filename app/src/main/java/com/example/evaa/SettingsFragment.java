@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,17 +13,22 @@ import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SettingsFragment extends Fragment {
 
-    Button btnTutorial, btnCredits, btnClearData;
+    Button btnCredits, btnTutorial, btnClearData;
+    public static final String sharedPrefs = "sharedPrefs";
+    public static final String TUTORIAL = "false";
+    private Boolean tutorialStarted;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        btnTutorial = rootView.findViewById(R.id.btnTutorial);
         btnCredits = rootView.findViewById(R.id.btnCredits);
+        btnTutorial = rootView.findViewById(R.id.btnTutorial);
         btnClearData = rootView.findViewById(R.id.btnClearData);
 
         btnCredits.setOnClickListener(new View.OnClickListener() {
@@ -40,15 +45,36 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        btnTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+
+
+
+            }
+        });
+
         btnClearData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatabaseHelper db = new DatabaseHelper(getActivity());
                 db.deleteAll();
-//                EnvironmentFragment.resetPercentProgress();
             }
         });
 
+        saveData();
         return rootView;
+    }
+
+    public void saveData() {
+        SharedPreferences sp = getContext().getSharedPreferences(sharedPrefs, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(TUTORIAL, true);
+    }
+
+    public void loadData() {
+        SharedPreferences sp = getContext().getSharedPreferences(sharedPrefs, MODE_PRIVATE);
+        tutorialStarted = sp.getBoolean(TUTORIAL, false);   //default value
     }
 }
