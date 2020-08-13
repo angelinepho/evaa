@@ -42,8 +42,8 @@ public class SplashScreenActivity extends AppCompatActivity {
             add("Only 4% of the world's children live in the US, but Americans buy (and throw away) 40% of the world's toys.\n-Rubicon");
             add("If one-forth of the food currently lost or waster globally could be saved, it would be enough to feed roughly 870 million people.\n-Rubicon");
             add("Annually, more than 14 billion pounds of garbage is dumped into the world's ocean (mainly marine life toxic plastic).\n-Rubicon");
-            add("The Great Pacific Garbage Patch is as large as twice the size of the US and would take 67 ships one year to clean up less than 1% of the garbage mass.\n-Rubicon");
-            add("Almost half of all seabirds species, all sea turtles species, and a growing list of fish species have been documented with plastic in/around their bodies.\n-Rubicon");
+            add("The Great Pacific Garbage Patch is twice the size of the US and would take 67 ships one year to clean up less than 1% of the garbage.\n-Rubicon");
+            add("Almost half of all seabirds species and all sea turtles specie have been documented with plastic in and around their bodies.\n-Rubicon");
             add("Every year, over 50 million tons of electronic waste (i.e. cell phones, computers, TVs, etc.) is created.\n-Rubicon");
             add("Annually, Americans throw out old phones containing over $60 million in gold and/or silver.\n-Rubicon");
             add("Not all types of glass bottles and jars are recyclable. The acceptance of glass in recycling programs varies by jurisdiction.\n-Waste Management");
@@ -66,7 +66,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 .withBackgroundResource(R.drawable.ic_background_true)
                 .withAfterLogoText("Fun Fact")
                 .withFooterText(String.valueOf(fact))
-                .withLogo(R.drawable.ic_ash_from_manufactured_logs_and_pellets);
+                .withLogo(R.drawable.ic_app_logo);
 
         myCustomTextViewAnimation(config.getAfterLogoTextView());
         myCustomTextViewAnimation(config.getFooterTextView());
