@@ -16,13 +16,10 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import java.util.List;
-import static android.content.Context.MODE_PRIVATE;
 
 public class SettingsFragment extends Fragment {
 
     Button btnCredits, btnTutorial, btnClearData;
-    public static final String PREFS_NAME = "sharedPrefs";
-    private SharedPreferences settings;
 
     @Nullable
     @Override
@@ -32,7 +29,6 @@ public class SettingsFragment extends Fragment {
         btnCredits = rootView.findViewById(R.id.btnCredits);
         btnTutorial = rootView.findViewById(R.id.btnTutorial);
         btnClearData = rootView.findViewById(R.id.btnClearData);
-        settings = getContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         btnCredits.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +47,7 @@ public class SettingsFragment extends Fragment {
         btnTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setTrueFL();
+//                setTrueFL();
             }
         });
 
@@ -86,23 +82,4 @@ public class SettingsFragment extends Fragment {
         return rootView;
     }
 
-    public Boolean getStatusFL() {
-        if (settings.getBoolean("firstLaunch", true)) {
-            return true;
-        }
-        return false;
-    }
-
-    public void setFalseFL() {
-        settings.edit().putBoolean("firstLaunch", false).commit();
-    }
-
-    public void setTrueFL() {
-        settings.edit().putBoolean("firstLaunch", true).commit();
-    }
-
-//    public void loadData() {
-//        SharedPreferences sp = getContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-//        firstRun = sp.getBoolean(TUTORIAL, false);   //default value
-//    }
 }

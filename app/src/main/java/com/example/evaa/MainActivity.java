@@ -1,17 +1,24 @@
 package com.example.evaa;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnItemSearch, btnEnvironment, btnHelp, btnSettings;
+    RelativeLayout rLayout;
+    Boolean tutorialMode;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,28 +29,55 @@ public class MainActivity extends AppCompatActivity {
         btnEnvironment = findViewById(R.id.btnEnvironment);
         btnHelp = findViewById(R.id.btnHelp);
         btnSettings = findViewById(R.id.btnSettings);
+        rLayout = findViewById(R.id.rLayout);
+
+        SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
+        boolean helpLaunch = sp.getBoolean("helpLaunch", true);
+
+
+        if (helpLaunch) {
+            tutorialMode = true;
+            btnItemSearch.setBackgroundResource(R.drawable.custom_button_false);
+            btnSettings.setBackgroundResource(R.drawable.custom_button_settings_false);
+            btnEnvironment.setBackgroundResource(R.drawable.custom_button_false);
+        } else {
+            rLayout.setBackgroundResource(R.drawable.ic_background_true);
+        }
 
         btnItemSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NavActivity.class);
-                intent.putExtra("instruction", "search");
-                startActivity(intent);
+                if (tutorialMode) {
+                } else {
+                    btnItemSearch.setBackgroundResource(R.drawable.custom_button_true);
+                    Intent intent = new Intent(MainActivity.this, NavActivity.class);
+                    intent.putExtra("instruction", "search");
+                    startActivity(intent);
+                }
             }
         });
 
         btnEnvironment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NavActivity.class);
-                intent.putExtra("instruction", "environment");
-                startActivity(intent);
+                if (tutorialMode) {
+                } else {
+                    btnEnvironment.setBackgroundResource(R.drawable.custom_button_true);
+                    Intent intent = new Intent(MainActivity.this, NavActivity.class);
+                    intent.putExtra("instruction", "environment");
+                    startActivity(intent);
+                }
             }
         });
 
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean("helpLaunch", false);
+                editor.apply();
+
                 Intent intent = new Intent(MainActivity.this, NavActivity.class);
                 intent.putExtra("instruction", "help");
                 startActivity(intent);
@@ -53,9 +87,13 @@ public class MainActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NavActivity.class);
-                intent.putExtra("instruction", "settings");
-                startActivity(intent);
+                if (tutorialMode) {
+                } else {
+                    btnSettings.setBackgroundResource(R.drawable.custom_button_settings_true);
+                    Intent intent = new Intent(MainActivity.this, NavActivity.class);
+                    intent.putExtra("instruction", "settings");
+                    startActivity(intent);
+                }
             }
         });
 
@@ -64,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
+
 }
 
 

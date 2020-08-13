@@ -7,7 +7,7 @@
     android:padding="25dp"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/ic_backgroundbackground"
+    android:background="@drawable/ic_background_true"
     tools:context=".LoggedListFragment">
 
     <TextView

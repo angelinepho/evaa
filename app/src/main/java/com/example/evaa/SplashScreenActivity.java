@@ -63,7 +63,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 .withFullScreen()
                 .withTargetActivity(MainActivity.class)
                 .withSplashTimeOut(6000)
-                .withBackgroundResource(R.drawable.ic_backgroundbackground)
+                .withBackgroundResource(R.drawable.ic_background_true)
                 .withAfterLogoText("Fun Fact")
                 .withFooterText(String.valueOf(fact))
                 .withLogo(R.drawable.ic_ash_from_manufactured_logs_and_pellets);
