@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class EnvironmentFragment extends Fragment {
 
@@ -45,6 +48,13 @@ public class EnvironmentFragment extends Fragment {
         btnHelp = rootView.findViewById(R.id.btnHelp);
         background = rootView.findViewById(R.id.background);
         ivCongrats = rootView.findViewById(R.id.ivCongrats);
+
+        SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        boolean envLaunch = sp.getBoolean("envLaunch", true);
+
+        if (envLaunch) {
+            startDialog();
+        }
 
         final DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
         Cursor data = databaseHelper.getListContents();
@@ -83,16 +93,7 @@ public class EnvironmentFragment extends Fragment {
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
-                builder.setMessage("Welcome to your environment! When you properly dispose of an item, log the item through Item Search. Click \"Track\" to see your list of items logged. Clean the entire screen to unlock a new environment!");
-                final AlertDialog alert = builder.create();
-                alert.show();
-
-                TextView textView = (TextView) alert.findViewById(android.R.id.message);
-                Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
-                textView.setTypeface(typeFace);
-                textView.setPadding(25,30,25,30);
-                textView.setTextSize(18);
+                startDialog();
             }
         });
 
@@ -155,6 +156,24 @@ public class EnvironmentFragment extends Fragment {
         } else {
             ivCongrats.setVisibility(View.GONE);
         }
+    }
+
+    public void startDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
+        builder.setMessage("Welcome to your environment! When you properly dispose of an item, log the item through Item Search. Click \"Track\" to see your list of items logged. Clean the entire screen to unlock a new environment!");
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+        TextView textView = (TextView) alert.findViewById(android.R.id.message);
+        Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
+        textView.setTypeface(typeFace);
+        textView.setPadding(25,30,25,30);
+        textView.setTextSize(18);
+
+        SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("envLaunch", false);
+        editor.apply();
     }
 
 }

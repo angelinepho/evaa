@@ -4,9 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import es.dmoral.toasty.Toasty;
+import static android.content.Context.MODE_PRIVATE;
 
 public class ItemFragment extends Fragment {
 
@@ -41,6 +40,14 @@ public class ItemFragment extends Fragment {
 
         Bundle bundle = getArguments();
         getIncomingBundle(rootView, bundle);
+
+        SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        boolean itemLaunch = sp.getBoolean("itemLaunch", true);
+
+        if (itemLaunch) {
+            startDialog();
+        }
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,16 +80,7 @@ public class ItemFragment extends Fragment {
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
-                builder.setMessage("Read below to find eco-friendly alternatives and proper disposal methods. Log an item to clean your environment screen.");
-                final AlertDialog alert = builder.create();
-                alert.show();
-
-                TextView textView = (TextView) alert.findViewById(android.R.id.message);
-                Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
-                textView.setTypeface(typeFace);
-                textView.setPadding(25,30,25,30);
-                textView.setTextSize(18);
+                startDialog();
             }
         });
 
@@ -120,6 +118,24 @@ public class ItemFragment extends Fragment {
 
         TextView disposal = rootView.findViewById(R.id.image_disposal);
         disposal.setText(imageDisposal);
+    }
+
+    public void startDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
+        builder.setMessage("Read below to find eco-friendly alternatives and proper disposal methods. Log an item to clean your environment screen.");
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+        TextView textView = (TextView) alert.findViewById(android.R.id.message);
+        Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
+        textView.setTypeface(typeFace);
+        textView.setPadding(25,30,25,30);
+        textView.setTextSize(18);
+
+        SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("itemLaunch", false);
+        editor.apply();
     }
 
 }
