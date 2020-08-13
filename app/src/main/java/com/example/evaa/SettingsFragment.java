@@ -10,23 +10,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.content.SharedPreferences;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import java.util.List;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class SettingsFragment extends Fragment {
 
     Button btnCredits, btnTutorial, btnClearData;
-    public static final String sharedPrefs = "sharedPrefs";
-    public static final String TUTORIAL = "false";
-    private Boolean tutorialStarted;
+    public static final String PREFS_NAME = "sharedPrefs";
+    private SharedPreferences settings;
 
     @Nullable
     @Override
@@ -36,6 +32,7 @@ public class SettingsFragment extends Fragment {
         btnCredits = rootView.findViewById(R.id.btnCredits);
         btnTutorial = rootView.findViewById(R.id.btnTutorial);
         btnClearData = rootView.findViewById(R.id.btnClearData);
+        settings = getContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         btnCredits.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +51,7 @@ public class SettingsFragment extends Fragment {
         btnTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
+                setTrueFL();
             }
         });
 
@@ -85,18 +82,27 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        saveData();
+
         return rootView;
     }
 
-    public void saveData() {
-        SharedPreferences sp = getContext().getSharedPreferences(sharedPrefs, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean(TUTORIAL, true);
+    public Boolean getStatusFL() {
+        if (settings.getBoolean("firstLaunch", true)) {
+            return true;
+        }
+        return false;
     }
 
-    public void loadData() {
-        SharedPreferences sp = getContext().getSharedPreferences(sharedPrefs, MODE_PRIVATE);
-        tutorialStarted = sp.getBoolean(TUTORIAL, false);   //default value
+    public void setFalseFL() {
+        settings.edit().putBoolean("firstLaunch", false).commit();
     }
+
+    public void setTrueFL() {
+        settings.edit().putBoolean("firstLaunch", true).commit();
+    }
+
+//    public void loadData() {
+//        SharedPreferences sp = getContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+//        firstRun = sp.getBoolean(TUTORIAL, false);   //default value
+//    }
 }

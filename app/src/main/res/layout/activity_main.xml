@@ -33,9 +33,9 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="25dp"
-            app:srcCompat="@drawable/ic_ash_from_manufactured_logs_and_pellets" />
+            app:srcCompat="@drawable/ic_app_logo" />
 
     </LinearLayout>
 

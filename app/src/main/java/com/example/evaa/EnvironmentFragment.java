@@ -111,19 +111,15 @@ public class EnvironmentFragment extends Fragment {
         final List<Integer> e4 = Arrays.asList(R.drawable.ic_park_4artboard_1, 75);
         final List<Integer> e5 = Arrays.asList(R.drawable.ic_park_5artboard_1, 100);
         final List<Integer> e6 = Arrays.asList(R.drawable.ic_desert_1artboard_1, 0);
-        final List<Integer> e7 = Arrays.asList(R.drawable.ic_desert_2artboard_1, 20);
-        final List<Integer> e8 = Arrays.asList(R.drawable.ic_desert_3artboard_1, 40);
-        final List<Integer> e9 = Arrays.asList(R.drawable.ic_desert_4artboard_1, 60);
-        final List<Integer> e10 = Arrays.asList(R.drawable.ic_desert_5artboard_1, 80);
-        final List<Integer> e11 = Arrays.asList(R.drawable.ic_desert_6artboard_1, 100);
-//        final List<Integer> e12 = Arrays.asList(R.drawable.desert_6, 100);
-//        final List<Integer> e13 = Arrays.asList(R.drawable.beach_1, 0);
-//        final List<Integer> e14 = Arrays.asList(R.drawable.beach_2, 16);
-//        final List<Integer> e15 = Arrays.asList(R.drawable.beach_3, 33);
-//        final List<Integer> e16 = Arrays.asList(R.drawable.beach_4, 50);
-//        final List<Integer> e17 = Arrays.asList(R.drawable.beach_5, 66);
-//        final List<Integer> e18 = Arrays.asList(R.drawable.beach_6, 83);
-//        final List<Integer> e19 = Arrays.asList(R.drawable.beach_7, 100);
+        final List<Integer> e7 = Arrays.asList(R.drawable.ic_desert_2artboard_1, 25);
+        final List<Integer> e8 = Arrays.asList(R.drawable.ic_desert_3artboard_1, 50);
+        final List<Integer> e9 = Arrays.asList(R.drawable.ic_desert_4artboard_1, 75);
+        final List<Integer> e10 = Arrays.asList(R.drawable.ic_desert_5artboard_1, 100);
+        final List<Integer> e11 = Arrays.asList(R.drawable.ic_beach_1artboard_1, 0);
+        final List<Integer> e12 = Arrays.asList(R.drawable.ic_beach_2artboard_1, 25);
+        final List<Integer> e13 = Arrays.asList(R.drawable.ic_beach_3artboard_1, 50);
+        final List<Integer> e14 = Arrays.asList(R.drawable.ic_beach_4artboard_1, 75);
+        final List<Integer> e15 = Arrays.asList(R.drawable.ic_beach_5artboard_1, 100);
 
         backgrounds = new ArrayList<List<Integer> >() {
             {
@@ -138,14 +134,10 @@ public class EnvironmentFragment extends Fragment {
                 add(e9);
                 add(e10);
                 add(e11);
-//                add(e12);
-//                add(e13);
-//                add(e14);
-//                add(e15);
-//                add(e16);
-//                add(e17);
-//                add(e18);
-//                add(e19);
+                add(e12);
+                add(e13);
+                add(e14);
+                add(e15);
             }
         };
     }
