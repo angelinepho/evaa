@@ -4,7 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     Button btnItemSearch, btnEnvironment, btnHelp, btnSettings;
+    ImageView ivLogo;
     RelativeLayout rLayout;
 
     @Override
@@ -23,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnEnvironment = findViewById(R.id.btnEnvironment);
         btnHelp = findViewById(R.id.btnHelp);
         btnSettings = findViewById(R.id.btnSettings);
+        ivLogo = findViewById(R.id.ivLogo);
         rLayout = findViewById(R.id.rLayout);
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             rLayout.setBackgroundResource(R.drawable.ic_background_true);
         }
+
 
         btnItemSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putBoolean("helpLaunch", false);
                 editor.apply();
-
                 Intent intent = new Intent(MainActivity.this, NavActivity.class);
                 intent.putExtra("instruction", "help");
                 startActivity(intent);

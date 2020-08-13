@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -87,6 +89,7 @@ public class EnvironmentFragment extends Fragment {
                 FragmentManager manager = mFragment.getFragmentManager();
                 manager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                         .replace(R.id.fragment_container, fragment).commit();
+                animateButton(btnLogger);
             }
         });
 
@@ -174,6 +177,15 @@ public class EnvironmentFragment extends Fragment {
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("envLaunch", false);
         editor.apply();
+
+        animateButton(btnHelp);
+    }
+
+    public void animateButton(Button b) {
+        final Animation animB = AnimationUtils.loadAnimation(getActivity(), R.anim.bounce_from_centerpt);
+        BounceAnimator interpolator = new BounceAnimator(0.1, 20);
+        animB.setInterpolator(interpolator);
+        b.startAnimation(animB);
     }
 
 }

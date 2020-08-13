@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -74,6 +76,8 @@ public class ItemFragment extends Fragment {
                 textView.setTypeface(typeFace);
                 textView.setPadding(25,30,25,30);
                 textView.setTextSize(18);
+
+                animateButton(btnAdd);
             }
         });
 
@@ -136,6 +140,15 @@ public class ItemFragment extends Fragment {
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("itemLaunch", false);
         editor.apply();
+
+        animateButton(btnHelp);
+    }
+
+    public void animateButton(Button b) {
+        final Animation animB = AnimationUtils.loadAnimation(getActivity(), R.anim.bounce_from_centerpt);
+        BounceAnimator interpolator = new BounceAnimator(0.1, 20);
+        animB.setInterpolator(interpolator);
+        b.startAnimation(animB);
     }
 
 }
