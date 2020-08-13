@@ -2,6 +2,7 @@ package com.example.evaa;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class SettingsFragment extends Fragment {
 
@@ -47,7 +50,35 @@ public class SettingsFragment extends Fragment {
         btnTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                setTrueFL();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
+                builder.setMessage("This action will re-enable the Tutorial. Continue?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putBoolean("helpLaunch", true);
+                                editor.putBoolean("itemLaunch", true);
+                                editor.putBoolean("envLaunch", true);
+                                editor.apply();
+
+                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                startActivity(intent);
+                                getActivity().overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_left);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        });
+                final AlertDialog alert = builder.create();
+                alert.show();
+
+                TextView textView = (TextView) alert.findViewById(android.R.id.message);
+                Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
+                textView.setTypeface(typeFace);
+                textView.setPadding(25,30,25,30);
+                textView.setTextSize(18);
             }
         });
 
