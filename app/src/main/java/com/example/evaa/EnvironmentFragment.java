@@ -2,6 +2,7 @@ package com.example.evaa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -40,7 +41,6 @@ public class EnvironmentFragment extends Fragment {
     private ArrayList<List<Integer>> backgrounds;
     private Integer currentBackground;
     private Integer percentProgress = 0;
-    private Boolean congratsPop;
     private GifImageView gifIV;
 
     @SuppressLint("LongLogTag")
@@ -58,8 +58,9 @@ public class EnvironmentFragment extends Fragment {
 
         SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
         boolean envLaunch = sp.getBoolean("envLaunch", true);
-        boolean congrats = sp.getBoolean("congrats", true);
-        congratsPop = congrats;
+        boolean congratsPop = sp.getBoolean("congrats", true);
+        boolean viewedPop = sp.getBoolean("congrats", false);
+
 
         if (envLaunch) {
             startDialog();
@@ -180,7 +181,7 @@ public class EnvironmentFragment extends Fragment {
             textView.setPadding(25, 30, 25, 30);
             textView.setTextSize(18);
 
-            editor.putBoolean("congrats", false);
+            editor.putBoolean("viewedPop", true);
             editor.apply();
 
 
@@ -195,7 +196,11 @@ public class EnvironmentFragment extends Fragment {
 //            editor.putBoolean("congrats", false);
 //            editor.apply();
 //            congratsPop = false;
+        } else {
+            editor.putBoolean("viewedPop", true);
+            editor.apply();
         }
+
     }
 
     public void startDialog() {
@@ -223,6 +228,17 @@ public class EnvironmentFragment extends Fragment {
         BounceAnimator interpolator = new BounceAnimator(0.1, 20);
         animB.setInterpolator(interpolator);
         b.startAnimation(animB);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
 
 }

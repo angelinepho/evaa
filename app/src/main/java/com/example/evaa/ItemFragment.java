@@ -2,6 +2,7 @@ package com.example.evaa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import android.app.AlertDialog;
@@ -149,6 +150,17 @@ public class ItemFragment extends Fragment {
         BounceAnimator interpolator = new BounceAnimator(0.1, 20);
         animB.setInterpolator(interpolator);
         b.startAnimation(animB);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
 
 }

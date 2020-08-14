@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         btnItemSearch = findViewById(R.id.btnItemSearch);
         btnEnvironment = findViewById(R.id.btnEnvironment);
