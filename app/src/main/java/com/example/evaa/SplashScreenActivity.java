@@ -102,4 +102,5 @@ public class SplashScreenActivity extends AppCompatActivity {
         animation.setDuration(1000);
         tv.startAnimation(animation);
     }
+
 }

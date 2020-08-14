@@ -29,4 +29,5 @@ public class CreditFragment extends Fragment {
         super.onStop();
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
+
 }

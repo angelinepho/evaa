@@ -1,10 +1,5 @@
 package com.example.evaa;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.fragment.app.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -19,9 +14,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.Fragment;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 import es.dmoral.toasty.Toasty;
 import static android.content.Context.MODE_PRIVATE;
 
@@ -50,7 +53,6 @@ public class ItemFragment extends Fragment {
         if (itemLaunch) {
             startDialog();
         }
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

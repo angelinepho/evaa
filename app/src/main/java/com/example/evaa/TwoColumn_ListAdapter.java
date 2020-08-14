@@ -34,11 +34,13 @@ public class TwoColumn_ListAdapter extends ArrayAdapter<Item> {
             if (itemDate != null) {
                 itemDate.setText((item.getItemDate()));
             }
+
             if (itemName != null) {
                 itemName.setText((item.getItemName()));
             }
-
         }
+
         return convertView;
     }
+
 }

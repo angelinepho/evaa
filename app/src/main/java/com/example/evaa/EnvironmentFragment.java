@@ -1,11 +1,5 @@
 package com.example.evaa;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -22,6 +16,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,9 +36,8 @@ public class EnvironmentFragment extends Fragment {
     private Button btnLogger, btnHelp;
     private ImageView background;
     private Integer numLogged = 0;
+    private Integer currentBackground, percentProgress;
     private ArrayList<List<Integer>> backgrounds;
-    private Integer currentBackground;
-    private Integer percentProgress = 0;
 
     @SuppressLint("LongLogTag")
     @Nullable
