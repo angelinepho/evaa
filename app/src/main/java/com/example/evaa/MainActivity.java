@@ -11,12 +11,14 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnItemSearch, btnEnvironment, btnHelp, btnSettings;
+    TextView tvTitle;
     ImageView ivLogo;
     RelativeLayout rLayout;
 
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         ivLogo = findViewById(R.id.ivLogo);
         rLayout = findViewById(R.id.rLayout);
+        tvTitle = findViewById(R.id.tvTitle);
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
         final boolean helpLaunch = sp.getBoolean("helpLaunch", true);
@@ -40,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
             btnItemSearch.setBackgroundResource(R.drawable.custom_button_false);
             btnSettings.setBackgroundResource(R.drawable.custom_button_settings_false);
             btnEnvironment.setBackgroundResource(R.drawable.custom_button_false);
+            tvTitle.setText(R.string.tutorialStatement);
         } else {
             rLayout.setBackgroundResource(R.drawable.ic_background_true);
+            tvTitle.setText(R.string.welcomeStatement);
         }
 
+        animateObjs();
 
         btnItemSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +102,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     @Override
     public void onBackPressed() {
+    }
+
+    public void animateObjs() {
+        final Animation animF = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        tvTitle.startAnimation(animF);
+//        final Animation animB = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce);
+//        ivLogo.startAnimation(animB);
+//        animB.setRepeatCount(Animation.INFINITE);
     }
 
 }

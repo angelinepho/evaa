@@ -13,7 +13,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +25,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import pl.droidsonroids.gif.GifDrawable;
-import pl.droidsonroids.gif.GifImageView;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class EnvironmentFragment extends Fragment {
@@ -41,7 +37,6 @@ public class EnvironmentFragment extends Fragment {
     private ArrayList<List<Integer>> backgrounds;
     private Integer currentBackground;
     private Integer percentProgress = 0;
-    private GifImageView gifIV;
 
     @SuppressLint("LongLogTag")
     @Nullable
@@ -53,19 +48,13 @@ public class EnvironmentFragment extends Fragment {
         btnLogger = rootView.findViewById(R.id.btnLogger);
         btnHelp = rootView.findViewById(R.id.btnHelp);
         background = rootView.findViewById(R.id.background);
-        gifIV = rootView.findViewById(R.id.gifIV);
-        gifIV.setVisibility(View.GONE);
 
         SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
         boolean envLaunch = sp.getBoolean("envLaunch", true);
-        boolean congratsPop = sp.getBoolean("congrats", true);
-        boolean viewedPop = sp.getBoolean("congrats", false);
-
 
         if (envLaunch) {
             startDialog();
         }
-
 
         final DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
         Cursor data = databaseHelper.getListContents();
@@ -164,12 +153,7 @@ public class EnvironmentFragment extends Fragment {
         percentProgress = backgrounds.get(numLogged%backgrounds.size()).get(1);
         progressBarAnim.setProgress(percentProgress);
 
-        SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-
         if (percentProgress == 100) {
-
-
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
             builder.setMessage("Congratulations! Your environment is now clean.");
             final AlertDialog alert = builder.create();
@@ -180,25 +164,6 @@ public class EnvironmentFragment extends Fragment {
             textView.setTypeface(typeFace);
             textView.setPadding(25, 30, 25, 30);
             textView.setTextSize(18);
-
-            editor.putBoolean("viewedPop", true);
-            editor.apply();
-
-
-
-//            if (alert.isShowing()) {
-//                gifIV.setVisibility(View.VISIBLE);
-//            }
-//            gifIV.setVisibility(View.GONE);
-
-
-//        } else {
-//            editor.putBoolean("congrats", false);
-//            editor.apply();
-//            congratsPop = false;
-        } else {
-            editor.putBoolean("viewedPop", true);
-            editor.apply();
         }
 
     }

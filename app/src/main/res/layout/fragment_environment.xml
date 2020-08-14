@@ -51,13 +51,13 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/stars_anim" />
+<!--    <pl.droidsonroids.gif.GifImageView-->
+<!--        android:id="@+id/gifIV"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:src="@drawable/stars_anim" />-->
 
 
 </RelativeLayout>

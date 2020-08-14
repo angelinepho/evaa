@@ -4,8 +4,8 @@
     <string name="earth">"Earth"</string>
     <string name="fact">"Fun Fact"</string>
     <string name="itemHint">"Item"</string>
-    <string name="temp">Hello,\nWhat would you like to do today?
-    </string>
+    <string name="welcomeStatement">Hello,\nWhat would you like to do today?</string>
+    <string name="tutorialStatement">Hello,\nLet\'s get you acquainted with the app.</string>
     <string name="image">image</string>
     <string name="name">name</string>
     <string name="alternative">Alternative</string>

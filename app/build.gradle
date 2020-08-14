@@ -51,7 +51,7 @@ dependencies {
 //    implementation 'com.airbnb.android:lottie:3.4.1'
 
     // gif drawable
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+//    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 }
 
 apply plugin: 'com.google.gms.google-services'
