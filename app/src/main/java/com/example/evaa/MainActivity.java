@@ -123,12 +123,12 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        ObjectAnimator animator = ObjectAnimator.ofFloat(ivLogo, "translationY", 0, 25, 0);
-        animator.setInterpolator(interpolator);
-        animator.setStartDelay(200);
-        animator.setDuration(800);
-        animator.setRepeatCount(-1);
-        animator.start();
+        ObjectAnimator anim = ObjectAnimator.ofFloat(ivLogo, "translationY", 0, 25, 0);
+        anim.setInterpolator(interpolator);
+        anim.setStartDelay(0);
+        anim.setDuration(1500);
+        anim.setRepeatCount(-1);
+        anim.start();
     }
 
 }

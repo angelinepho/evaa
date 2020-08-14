@@ -34,7 +34,6 @@ public class EnvironmentFragment extends Fragment {
     private ProgressBar progressBarAnim;
     private ObjectAnimator progressAnimator;
     private Button btnLogger, btnHelp;
-    private ImageView background;
     private Integer numLogged = 0;
     private Integer currentBackground, percentProgress;
     private ArrayList<List<Integer>> backgrounds;
@@ -48,7 +47,6 @@ public class EnvironmentFragment extends Fragment {
         initializeProgressBar(rootView);
         btnLogger = rootView.findViewById(R.id.btnLogger);
         btnHelp = rootView.findViewById(R.id.btnHelp);
-        background = rootView.findViewById(R.id.background);
 
         SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
         boolean envLaunch = sp.getBoolean("envLaunch", true);

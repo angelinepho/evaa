@@ -3,12 +3,14 @@ package com.example.evaa;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -95,6 +97,23 @@ public class SplashScreenActivity extends AppCompatActivity {
         Animation animation = new AlphaAnimation(0, 1);
         animation.setDuration(1000);
         logo.startAnimation(animation);
+
+        Interpolator interpolator = new Interpolator() {
+            @Override
+            public float getInterpolation(float v) {
+                return getPowIn(v,2);   //add getPowIn(v,3); for more down animation
+            }
+            private float getPowIn(float elapsedTimeRate, double pow) {
+                return (float) Math.pow(elapsedTimeRate, pow);
+            }
+        };
+
+        ObjectAnimator anim = ObjectAnimator.ofFloat(logo, "translationY", 0, 25, 0);
+        anim.setInterpolator(interpolator);
+        anim.setStartDelay(0);
+        anim.setDuration(1500);
+        anim.setRepeatCount(-1);
+        anim.start();
     }
 
     private void myCustomTextViewAnimation(TextView tv){

@@ -36,6 +36,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.getSupportActionBar().show();
+        activity.getSupportActionBar().setTitle("Search");
         setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         initImageBitmaps();
