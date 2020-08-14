@@ -41,9 +41,12 @@ Currently, this app is not on the Google Play Store. The best way to run this pr
 ### References
 * Item Search Icons from [flaticon](https://www.flaticon.com/)
 * Century Gothic Font from [dafontFree.net](https://www.dafontfree.net/freefonts-century-gothic-f101950.htm)
+* Graphics made with [Vectornator](https://www.vectornator.io/) and rendered with [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
 * ProgramMe Programming’s ‘Learn Android Application Development’ on [Udemy](https://www.udemy.com/course/learn-android-application-development-y/)
 * Coding In Flow’s [YouTube channel](https://www.youtube.com/channel/UC_Fh8kvtkVPkeihBs42jGcA)
-* Graphics made with [Vectornator](https://www.vectornator.io/) and rendered with [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
+* CodingWithMitch's Android Beginner SQLite Tutorials [YouTube playlist](https://www.youtube.com/playlist?list=PLgCYzUzKIBE8A8iKd3e84JxymFIORn_Lk)
+* shad sluiter's SQLite Database Tutorial for Android Studio [YouTube video](https://youtu.be/hDSVInZ2JCs)
+
 
 ### Special Thanks and Contributors
 * Special thanks to our technical mentor, Ravin Jain, the [SEEDS-2020](http://www.dandilyonn.com/seeds.html?fbclid=IwAR3OlbJ1yTdb7Bj7Y314YsbmE4t-g6IDdwF2ykPtrN9Tmp-3p6G9iJykc5Q) team, our interviewees, and our user testers. 
