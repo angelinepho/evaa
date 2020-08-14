@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -35,9 +38,10 @@ public class EnvironmentFragment extends Fragment {
     private ImageView background;
     private Integer numLogged = 0;
     private ArrayList<List<Integer>> backgrounds;
-    private ImageView ivCongrats;
     private Integer currentBackground;
     private Integer percentProgress = 0;
+    private Boolean congratsPop;
+    private GifImageView gifIV;
 
     @SuppressLint("LongLogTag")
     @Nullable
@@ -49,14 +53,18 @@ public class EnvironmentFragment extends Fragment {
         btnLogger = rootView.findViewById(R.id.btnLogger);
         btnHelp = rootView.findViewById(R.id.btnHelp);
         background = rootView.findViewById(R.id.background);
-        ivCongrats = rootView.findViewById(R.id.ivCongrats);
+        gifIV = rootView.findViewById(R.id.gifIV);
+        gifIV.setVisibility(View.GONE);
 
         SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
         boolean envLaunch = sp.getBoolean("envLaunch", true);
+        boolean congrats = sp.getBoolean("congrats", true);
+        congratsPop = congrats;
 
         if (envLaunch) {
             startDialog();
         }
+
 
         final DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
         Cursor data = databaseHelper.getListContents();
@@ -68,7 +76,6 @@ public class EnvironmentFragment extends Fragment {
         constructBackground();
         setBackground(rootView);
         setProgressBar();
-        initializeProgressBar(rootView);
 
 //        progressAnimator.addListener(new AnimatorListenerAdapter() {
 //            @Override
@@ -100,6 +107,7 @@ public class EnvironmentFragment extends Fragment {
             }
         });
 
+        initializeProgressBar(rootView);
         return rootView;
     }
 
@@ -154,10 +162,39 @@ public class EnvironmentFragment extends Fragment {
     public void setProgressBar() {
         percentProgress = backgrounds.get(numLogged%backgrounds.size()).get(1);
         progressBarAnim.setProgress(percentProgress);
+
+        SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
         if (percentProgress == 100) {
-            ivCongrats.setVisibility(View.VISIBLE);
-        } else {
-            ivCongrats.setVisibility(View.GONE);
+
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
+            builder.setMessage("Congratulations! Your environment is now clean.");
+            final AlertDialog alert = builder.create();
+            alert.show();
+
+            TextView textView = (TextView) alert.findViewById(android.R.id.message);
+            Typeface typeFace = ResourcesCompat.getFont(getActivity(), R.font.cgothic);
+            textView.setTypeface(typeFace);
+            textView.setPadding(25, 30, 25, 30);
+            textView.setTextSize(18);
+
+            editor.putBoolean("congrats", false);
+            editor.apply();
+
+
+
+//            if (alert.isShowing()) {
+//                gifIV.setVisibility(View.VISIBLE);
+//            }
+//            gifIV.setVisibility(View.GONE);
+
+
+//        } else {
+//            editor.putBoolean("congrats", false);
+//            editor.apply();
+//            congratsPop = false;
         }
     }
 
