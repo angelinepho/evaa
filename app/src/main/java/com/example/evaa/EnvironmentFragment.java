@@ -7,13 +7,13 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -50,6 +50,7 @@ public class EnvironmentFragment extends Fragment {
 
         SharedPreferences sp = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
         boolean envLaunch = sp.getBoolean("envLaunch", true);
+        percentProgress = 0;
 
         if (envLaunch) {
             startDialog();
@@ -97,11 +98,14 @@ public class EnvironmentFragment extends Fragment {
         });
 
         initializeProgressBar(rootView);
+
+        Log.i("percentage", String.valueOf(percentProgress));
         return rootView;
     }
 
     public void initializeProgressBar(View rootView) {
         progressBarAnim = rootView.findViewById(R.id.progressBar);
+        progressBarAnim.setMax(100);
         progressAnimator = ObjectAnimator.ofInt(progressBarAnim, "progress", 0, 100);
     }
 
@@ -149,6 +153,8 @@ public class EnvironmentFragment extends Fragment {
     }
 
     public void setProgressBar() {
+        progressBarAnim.setProgress(0);
+        progressBarAnim.setMax(100);
         percentProgress = backgrounds.get(numLogged%backgrounds.size()).get(1);
         progressBarAnim.setProgress(percentProgress);
 
